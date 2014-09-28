@@ -68,20 +68,23 @@
         }
     </script>
     <script type="text/javascript">
-    function setFooterPosition() {
-        $('#footer').show();
-        if ( $('#signin-form').offset().top + $('#signin-form').height() >= $('#footer').offset().top ) {
-            $('#footer').hide();
+        function setFooterPosition() {
+            $('#footer').show();
+            if ( $('#signin-form').offset().top + $('#signin-form').height() >= $('#footer').offset().top ) {
+                $('#footer').hide();
+            }
         }
-    }
     </script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#wrapper').css('background-image', getBackgroundImageUrl());
+        $(document).ready(function() {
+            $('#wrapper').css('background-image', getBackgroundImageUrl());
+            setFooterPosition();
+        });
+    </script>
+    <script type="text/javascript">
         $(window).resize(function() {
             setFooterPosition();
         });
-    });
     </script>
     <script type="text/javascript">
         function onSubmit() {
@@ -114,7 +117,7 @@
     <script type="text/javascript">
         function processLoginResult(result) {
             if ( result['isSuccessful'] ) {
-                window.location.href="/home";
+                window.location.href="<?php echo URL::to('/'); ?>/home";
             } else {
                 if ( result['isUsernameEmpty'] && result['isPasswordEmpty'] ) {
                     displayErrorMessage('请输入用户名和密码.');

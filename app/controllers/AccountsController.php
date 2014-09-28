@@ -12,6 +12,9 @@ class AccountsController extends BaseController {
     public function login() {
         $isLoggout = Input::get('logout', false);
 
+        if ( $isLoggout ) {
+            Auth::logout();
+        }
         return View::make('accounts/login')
                 ->with('isLoggout', $isLoggout);
     }
@@ -32,7 +35,12 @@ class AccountsController extends BaseController {
         );
 
         if ( !$result['isUsernameEmpty'] && !$result['isPasswordEmpty'] ) {
-            // Connect to the database
+            $user = User::find($username);
+            if ( $user != null && $user->password == $password ) {
+                $result['isAccoutValid'] = true;
+                $result['isSuccessful']  = true;
+                Auth::login($user);    
+            }
         }
         return Response::json($result);
     }

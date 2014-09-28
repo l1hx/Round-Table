@@ -52,7 +52,7 @@
             <div id="avatar">
                 <a id="profile-trigger" href="javascript:void(0)">
                     <ul class="inline">
-                        <li>谢浩哲</li>
+                        <li><?php echo $username; ?></li>
                         <li>
                             <span><img id="avatar-small" class="img-circle" src="<?php echo URL::to('/'); ?>/img/avatar-small.png" alt="avatar" /></span>
                             <span id="scroll-down-button"></span>
@@ -68,8 +68,8 @@
                         </div> <!-- #avatar-large -->
                         <div id="profile-info">
                             <div id="user-info">
-                                <span id="display-name">谢浩哲</span>
-                                <span id="username">zjhzxhz@gmail.com</span>
+                                <span id="display-name"><?php echo $username; ?></span>
+                                <span id="username"><?php echo $email; ?></span>
                             </div>
                             <button class="btn btn-primary" onclick="">查看个人资料</button>
                         </div> <!-- #profile-info -->
