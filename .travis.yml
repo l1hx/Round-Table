@@ -1,0 +1,13 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+services: mysql
+
+before_script:
+  - mysql -e 'CREATE DATABASE zjhzxhzc_class8;'
+
+script: phpunit --coverage-text --configuration phpunit.xml
