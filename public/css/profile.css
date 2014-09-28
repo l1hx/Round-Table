@@ -1,0 +1,47 @@
+div#hero {
+	background-color: #404040;
+	overflow: hidden;
+	height: 270px;
+}
+
+div#hero div#profile-card {
+	color: #fff;
+	text-align: center;
+	padding: 40px 0 40px;
+	width: 260px;
+}
+
+div#hero div#profile-card p {
+	font-size: 12px;
+	margin-bottom: 0;
+}
+
+div#hero div#cover {
+	width: 480px;
+}
+
+div#basic-block.block {
+	border-top-color: #76a7fa;
+}
+
+div#contact-block.block {
+	border-top-color: #e46f61;
+}
+
+div.block {
+	background: #fff;
+	border: 1px solid #d8d8d8;
+	border-top-width: 5px;
+	border-bottom-width: 2px;
+	float: left;
+	margin: 10px 0 20px;
+	padding: 20px 10px;
+	width: 338px;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}
+
+div.block.right {
+	margin-left: 20px;
+}

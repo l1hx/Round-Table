@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+# AccountsController的路由表
+Route::get('/', 'AccountsController@login');
+Route::get('/accounts/login', 'AccountsController@login');
+Route::post('/accounts/loginAction', 'AccountsController@loginAction');
