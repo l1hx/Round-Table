@@ -491,7 +491,7 @@ div#navigation-sidebar {
 	background: #fff;
 	display: none;
 	position: fixed;
-	top: 60;
+	top: 60px;
 	left: 0;
 	width: 216px;
 	height: 100%;

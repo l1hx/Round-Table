@@ -10,7 +10,10 @@ class AccountsController extends BaseController {
      * @return 包含登陆页面的View对象
      */
     public function login() {
-        return View::make('accounts/login');
+        $isLoggout = Input::get('logout', false);
+
+        return View::make('accounts/login')
+                ->with('isLoggout', $isLoggout);
     }
 
     /**

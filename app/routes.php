@@ -11,7 +11,13 @@
 |
 */
 
-# AccountsController的路由表
+# 默认路由
 Route::get('/', 'AccountsController@login');
+
+# AccountsController的路由表
 Route::get('/accounts/login', 'AccountsController@login');
 Route::post('/accounts/loginAction', 'AccountsController@loginAction');
+
+#HomeController的路由表
+Route::get('/home', 'HomeController@index');
+Route::get('/home/getPageContentAction', 'HomeController@getPageContentAction');

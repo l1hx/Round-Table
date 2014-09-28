@@ -25,7 +25,9 @@
                     <h1>登录</h1>
                     <div id="signin-form-content">
                         <div class="alert alert-error hide"></div>
-                        <div class="alert alert-success hide">您已登出.</div>
+                    <?php if ( isset($isLoggout) && $isLoggout ): ?>
+                        <div class="alert alert-success">您已登出.</div>
+                    <?php endif; ?>
                         <div id="username-controls" class="form-controls">
                             <label id="username-label" for="username">用户名</label>
                             <input id="username" name="username" type="text" maxlength="16" />
