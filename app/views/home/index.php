@@ -327,7 +327,7 @@
         $('#hangouts-trigger').click(function(){
             var isDialogShown = $('#hangouts-dialog').is(":visible");
             if ( !isDialogShown ) {
-                $('#content').css('padding-right', '260');
+                $('#content').css('padding-right', '260px');
                 if ( $('navigation-bar').hasClass('fixed') ) {
                     $('#hangouts-dialog').css('top', '104');
                 }
