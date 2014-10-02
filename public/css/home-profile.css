@@ -20,14 +20,6 @@ div#hero div#cover {
 	width: 480px;
 }
 
-div#basic-block.block {
-	border-top-color: #76a7fa;
-}
-
-div#contact-block.block {
-	border-top-color: #e46f61;
-}
-
 div.block {
 	background: #fff;
 	border: 1px solid #d8d8d8;
@@ -35,8 +27,8 @@ div.block {
 	border-bottom-width: 2px;
 	float: left;
 	margin: 10px 0 20px;
-	padding: 20px 10px;
-	width: 338px;
+	padding: 20px;
+	width: 318px;
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
 			border-radius: 3px;
@@ -44,4 +36,46 @@ div.block {
 
 div.block.right {
 	margin-left: 20px;
+}
+
+div.block > h2 {
+	margin-bottom: 20px;
+}
+
+div.block > h2 > span.edit {
+	float: right;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+div.block > h2 > span.edit > a {
+	text-decoration: none;
+}
+
+div.block div.span4 {
+	font-weight: bold;
+}
+
+div.block p.tip {
+	color: #666;
+	font-size: 12px;
+}
+
+div#basic-block.block {
+	border-top-color: #76a7fa;
+}
+
+div#tip-block {
+	background-color: #e49307;
+	border: none;
+	color: #fff;
+	min-height: 207px;
+}
+
+div#security-block {
+	border-top-color: #4dbfd9;
+}
+
+div#contact-block.block {
+	border-top-color: #e46f61;
 }

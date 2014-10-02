@@ -63,8 +63,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript">
         function getBackgroundImageUrl() {
-            var image_number = Math.floor(Math.random() * 5);
-            return 'url("<?php echo URL::to('/'); ?>/img/backgrounds/bg' + image_number + '.jpg")';
+            var imageNumber = Math.floor(Math.random() * 5);
+            return 'url("<?php echo URL::to('/'); ?>/img/backgrounds/bg' + imageNumber + '.jpg")';
         }
     </script>
     <script type="text/javascript">
@@ -96,6 +96,8 @@
             var username    = $('#username').val(),
                 password    = md5($('input[name=password]').val()),
                 rememberMe  = $('#remember-me').is(':checked');
+
+            $('input[name=password]').val(password);
             doLoginAction(username, password, rememberMe);
         };
     </script>

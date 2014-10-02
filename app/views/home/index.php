@@ -158,7 +158,7 @@
         </div> <!-- #navigation-sidebar -->
         <div id="notify-widget-panel">
             <div id="message">正在加载...</div>
-        </div> <!-- #notify-widget-panel <--></-->
+        </div> <!-- #notify-widget-panel -->
         <div id="content"></div> <!-- #content -->
     </div> <!-- #container -->
     <!-- Java Script -->
@@ -196,7 +196,7 @@
                     $('#position').css('background-color', '#f5f5f5');
                     $('#position').css('margin-left', 12);
                     $('#position .position-name').css('display', 'none');
-                    $('#hangouts-dialog').css('top', '44');
+                    $('#hangouts-dialog').css('top', 44);
                     $('#navigation-sidebar').css('top', 0);
                     $('#footer').css('margin-bottom', 0);
                 } else {
@@ -205,7 +205,7 @@
                     $('#position').css('background-color', '#fff');
                     $('#position').css('margin-left', 30);
                     $('#position .position-name').css('display', 'inline-block');
-                    $('#hangouts-dialog').css('top', '104');
+                    $('#hangouts-dialog').css('top', 104);
                     $('#navigation-sidebar').css('top', 60);
                     $('#footer').css('margin-bottom', 60);
                 }
@@ -327,16 +327,16 @@
         $('#hangouts-trigger').click(function(){
             var isDialogShown = $('#hangouts-dialog').is(":visible");
             if ( !isDialogShown ) {
-                $('#content').css('padding-right', '260px');
+                $('#content').css('padding-right', 260);
                 if ( $('navigation-bar').hasClass('fixed') ) {
-                    $('#hangouts-dialog').css('top', '104');
+                    $('#hangouts-dialog').css('top', 104);
                 }
                 $('#hangouts-trigger').css('margin-right', 160);
                 $('#hangouts-dialog').css('display', 'block');
             } else {
                 $('#content').css('padding-right', '');
                 if ( $('navigation-bar').hasClass('fixed') ) {
-                    $('#hangouts-dialog').css('top', '0');
+                    $('#hangouts-dialog').css('top', 0);
                 }
                 $('#hangouts-trigger').css('margin-right', 0);
                 $('#hangouts-dialog').css('display', 'none');

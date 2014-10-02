@@ -34,8 +34,32 @@ class HomeController extends BaseController {
      * @return 一个包含子页面内容的View对象
      */
     public function getPageContentAction() {
-        $pageName = Input::get('pageName');
+        $pageName       = Input::get('pageName');
+        $getFunction    = 'get'.ucfirst($pageName);
 
-        return View::make("home/$pageName");
+        return View::make("home/$pageName")
+                ->with($pageName, $this->$getFunction());
+    }
+
+    /**
+     * 加载Profile页面的信息.
+     * 获取用户的个人资料. 
+     * @return 一个包含用户个人资料的数组.
+     */
+    public function getProfile() {
+        $username = Auth::user()->username;
+        $profile  = Classmate::find($username);
+
+        return array(
+            'username'  => $username,
+            'email'     => Auth::user()->email,
+            'birthday'  => $profile->birthday,
+            'country'   => $profile->country,
+            'city'      => $profile->city,
+            'mobile'    => $profile->mobile,
+            'company'   => $profile->company,
+            'mobile'    => $profile->mobile,
+            'qq'        => $profile->qq,
+        );
     }
 }
