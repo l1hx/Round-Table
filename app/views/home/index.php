@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>The Home of Class8</title>
+    <title>首页 | The Home of Class8</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
@@ -243,14 +243,14 @@
                 type: 'GET',
                 url: '<?php echo URL::to('/'); ?>/home/getPageContentAction?pageName=' + pageName,
                 success: function(pageContent) {
-                    updateNavigationIcon(pageName);
+                    updateNavigation(pageName);
                     $('#content').html(pageContent);
                 }
             });
         }
     </script>
     <script type="text/javascript">
-        function updateNavigationIcon(pageName) {
+        function updateNavigation(pageName) {
             var triggerObject   = $('a[href=#' + pageName + ']'),
                 pageDisplayName = $('.position-name', triggerObject).html();
             
@@ -258,6 +258,7 @@
                 return c.replace(/(^|\s)icon-\S+/g, ' icon-' + pageName);
             });
             $('#position > .position-name').html(pageDisplayName);
+            document.title = pageDisplayName + '| The Home of Class8';
         }
     </script>
     <script type="text/javascript">

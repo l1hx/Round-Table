@@ -44,4 +44,12 @@ class AccountsController extends BaseController {
         }
         return Response::json($result);
     }
+
+    /**
+     * 加载重置密码页面.
+     * @return 包含重置密码页面的View对象
+     */
+    public function resetPassword() {
+        return View::make('accounts/reset');
+    }
 }

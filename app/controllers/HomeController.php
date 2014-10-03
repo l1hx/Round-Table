@@ -13,8 +13,6 @@ class HomeController extends BaseController {
         $this->beforeFilter(function() {
             if ( !Auth::check() ) {
                 return Redirect::to('accounts/login');
-            } else {
-                // $this->profile = $this->getProfile();
             }
         });
     }

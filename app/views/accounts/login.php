@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
-    <title>The Home of Class8</title>
+    <title>登录 | The Home of Class8</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
@@ -34,7 +34,7 @@
                         </div> <!-- #username-controls -->
                         <div id="password-controls" class="form-controls">
                             <label id="password-label" for="password">密码</label>
-                            <label id="forget-password"><a href="#">忘记密码?</a></label>
+                            <label id="forget-password"><a href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
                             <input id="password" name="password" type="password" maxlength="16" />
                         </div> <!-- #password-controls -->
                         <button id="submit" type="submit" class="btn btn-primary">登录</button>
@@ -52,9 +52,9 @@
             </div> <!-- #copyright -->
             <div id="help-and-support">
                 <ul class="inline">
-                    <li>帮助中心</li>
+                    <li><a href="http://zjhzxhz.github.io/class8" target="_blank">帮助中心</a></li>
                     <li>|</li>
-                    <li>关于我们</li>
+                    <li><a href="http://www.zjhzxhz.com/about" target="_blank">关于我们</a></li>
                 </ul>
             </div> <!-- #help-and-support -->
         </div> <!-- #footer -->
