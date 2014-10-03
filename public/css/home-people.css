@@ -1,0 +1,52 @@
+div#content {
+	width: 980px;
+}
+
+p.slogan {
+	color: #666;
+}
+
+ul.thumbnails > li {
+	background-color: #fff;
+	height: 320px;
+	overflow: hidden;
+}
+
+ul.thumbnails > li div.introduction {
+	padding: 5px 10px;
+	min-height: 150px;
+}
+
+ul.thumbnails > li div.introduction div.location,
+ul.thumbnails > li div.introduction div.contact {
+	color: #666;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+ul.thumbnails > li div.introduction div.contact span {
+	overflow: hidden;
+}
+
+ul.thumbnails > li div.introduction div.contact i {
+	float: left;
+	margin-top: 4px;
+	margin-right: 4px;
+	opacity: .75;
+	filter: alpha(opacity=75);
+}
+
+ul.thumbnails > li div.introduction div.location span {
+	display: block;
+	float: left;
+	max-width: 130px;
+	max-height: 20px;
+	overflow: hidden;
+}
+
+ul.thumbnails > li div.introduction div.contact a {
+	display: block;
+	float: left;
+	max-width: 130px;
+	overflow: hidden;
+}

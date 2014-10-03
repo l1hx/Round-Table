@@ -287,7 +287,12 @@ div#profile div#brief-profile {
 }
 
 div#brief-profile div#avatar-large {
-    display: inline-block;
+    float: left;
+
+}
+
+div#brief-profile div#avatar-large img {
+	max-width: 96px;
 }
 
 div#brief-profile div#profile-info {
@@ -374,7 +379,7 @@ div.position-icon {
 	zoom: 1;
 }
 
-div.icon-home {
+div.icon-dashboard {
 	background-position: -40px -60px;
 }
 
@@ -571,7 +576,6 @@ div#notify-widget-panel div.message {
 
 div#content {
 	margin: 0 auto;
-	width: 740px;
-	/*-webkit-transition: margin-right .15s cubic-bezier(0,1.12,.39,.98);*/
-	/*transition: margin-right .15s;*/
+	-webkit-transition: margin-right .15s cubic-bezier(0,1.12,.39,.98);
+	transition: margin-right .15s;
 }

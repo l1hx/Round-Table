@@ -2508,7 +2508,7 @@ table th[class*="span"],
   background-position: -312px -24px;
 }
 
-.icon-headphones {
+.icon-phone {
   background-position: -336px -24px;
 }
 
@@ -5508,7 +5508,7 @@ input[type="submit"].btn.btn-mini {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  background-color: #fff;
 }
 
 .modal-backdrop.fade {
@@ -5517,8 +5517,8 @@ input[type="submit"].btn.btn-mini {
 
 .modal-backdrop,
 .modal-backdrop.fade.in {
-  opacity: 0.8;
-  filter: alpha(opacity=80);
+  opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 
 .modal {
@@ -5529,12 +5529,8 @@ input[type="submit"].btn.btn-mini {
   width: 640px;
   margin-left: -280px;
   background-color: #ffffff;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  *border: 1px solid #999;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  border: rgba(0,0,0,0);
   outline: none;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -5575,6 +5571,20 @@ input[type="submit"].btn.btn-mini {
   max-height: 324px;
   padding: 15px;
   overflow-y: auto;
+}
+
+.modal-body .span4 {
+  font-weight: bold;
+  padding-top: 4px;
+}
+
+.modal-body input[type=text],
+.modal-body input[type=password] {
+  box-shadow: inset 0 1px #f5f5f5;
+  border: 1px solid #d5d5d5;
+  outline: none;
+  padding: 4px 6px 2px;
+  border-radius: 0px;
 }
 
 .modal-form {
@@ -5881,7 +5891,6 @@ input[type="submit"].btn.btn-mini {
 
 .thumbnail {
   display: block;
-  padding: 4px;
   line-height: 20px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/home-base.css" />
     <!-- Java Script -->
     <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div id="header">
@@ -54,7 +55,7 @@
                     <ul class="inline">
                         <li><?php echo $username; ?></li>
                         <li>
-                            <span><img id="avatar-small" class="img-circle" src="<?php echo URL::to('/'); ?>/img/avatar-small.png" alt="avatar" /></span>
+                            <span><img id="avatar-small" class="img-circle" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($email)); ?>?s=200&d=mm" alt="avatar" /></span>
                             <span id="scroll-down-button"></span>
                         </li>
                     </ul>
@@ -64,7 +65,7 @@
                     <span class="arrow-shadow"></span>
                     <div id="brief-profile">
                         <div id="avatar-large">
-                            <img src="<?php echo URL::to('/'); ?>/img/avatar-large.png" alt="avatar" />
+                            <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($email)); ?>?s=200&d=mm" alt="avatar" />
                         </div> <!-- #avatar-large -->
                         <div id="profile-info">
                             <div id="user-info">
@@ -85,7 +86,7 @@
         <div id="navigation-bar">
             <div id="icon"></div> <!-- #icon -->
             <div id="position">
-                <div class="position-icon icon-home"></div> <!-- .position-icon -->
+                <div class="position-icon icon-dashboard"></div> <!-- .position-icon -->
                 <div class="position-name">首页</div> <!-- .position-name -->
                 <div class="slide-down"></div> <!-- .slide-down -->
             </div> <!-- #position -->
@@ -105,9 +106,9 @@
             </div> <!-- #hangouts -->
         </div> <!-- #navigation-bar -->
         <div id="navigation-sidebar">
-            <a href="#home">
+            <a href="#dashboard">
                 <div class="nav-item border-bottom">
-                    <div class="position-icon icon-home"></div> <!-- .icon-home -->
+                    <div class="position-icon icon-dashboard"></div> <!-- .icon-dashboard -->
                     <div class="position-name">首页</div> <!-- .position-name -->
                 </div> <!-- .nav-item -->
             </a>
@@ -178,7 +179,7 @@
 
             var pageName = getPageName();
             if ( pageName == null ) {
-                pageName = 'home';
+                pageName = 'dashboard';
             }
             getPageContent(pageName);
         });

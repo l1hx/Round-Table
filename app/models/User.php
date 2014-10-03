@@ -6,8 +6,11 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
-
     use UserTrait, RemindableTrait;
+
+    public function classmate() {
+        return $this->hasOne('Classmate', 'username');
+    }
 
     /**
      * The database table used by the model.

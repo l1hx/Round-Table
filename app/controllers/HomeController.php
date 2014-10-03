@@ -41,6 +41,10 @@ class HomeController extends BaseController {
                 ->with($pageName, $this->$getFunction());
     }
 
+    public function getDashboard() {
+        return array();
+    }
+
     /**
      * 加载Profile页面的信息.
      * 获取用户的个人资料. 
@@ -61,5 +65,25 @@ class HomeController extends BaseController {
             'mobile'    => $profile->mobile,
             'qq'        => $profile->qq,
         );
+    }
+
+    public function getPeople() {
+        return Classmate::with('user')->orderBy(DB::raw('CONVERT(username USING GBK)'))->get()->toArray();
+    }
+
+    public function getPhotos() {
+        return array();
+    }
+
+    public function getActivity() {
+        return array();
+    }
+
+    public function getVotes() {
+        return array();
+    }
+
+    public function getHangouts() {
+        return array();
     }
 }

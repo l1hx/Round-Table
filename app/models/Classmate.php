@@ -1,6 +1,10 @@
 <?php
 
 class Classmate extends Eloquent {
+    public function user() {
+        return $this->belongsTo('User', 'username');
+    }
+
     /**
      * The database table used by the model.
      *
