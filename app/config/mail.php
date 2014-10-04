@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mail',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'mail.zjhzxhz.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,10 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array(
+		'address' 	=> 'no-reply@zjhzxhz.com', 
+		'name' 		=> 'The Home of Class8',
+	),
 
 	/*
 	|--------------------------------------------------------------------------

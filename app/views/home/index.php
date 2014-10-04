@@ -72,7 +72,7 @@
                                 <span id="display-name"><?php echo $username; ?></span>
                                 <span id="username"><?php echo $email; ?></span>
                             </div>
-                            <button class="btn btn-primary" onclick="">查看个人资料</button>
+                            <button class="btn btn-primary" onclick="window.location.href='<?php echo URL::to('/'); ?>/home#profile'">查看个人资料</button>
                         </div> <!-- #profile-info -->
                     </div> <!-- #brief-profile -->
                     <div id="sign-out">

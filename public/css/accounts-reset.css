@@ -52,11 +52,8 @@ div#wrapper div#content div.span8 div#main-content {
 	padding-left: 40px;
 }
 
-div#wrapper div#content div.span8 div#main-content form {
-	margin-bottom: 20px;
-}
-
 div#wrapper div#content div.span8 div#main-content p.tip {
+	margin-top: 20px;
 	color: #666;
 }
 

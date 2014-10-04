@@ -18,7 +18,8 @@ Route::get('/', 'AccountsController@login');
 Route::get('/accounts/login', 'AccountsController@login');
 Route::post('/accounts/loginAction', 'AccountsController@loginAction');
 Route::get('/accounts/resetPassword', 'AccountsController@resetPassword');
-Route::get('/accounts/resetPasswordAction', 'AccountsController@resetPasswordAction');
+Route::post('/accounts/confirmConfidentialAction', 'AccountsController@confirmConfidentialAction');
+Route::post('/accounts/resetPasswordAction', 'AccountsController@resetPasswordAction');
 
 #HomeController的路由表
 Route::get('/home', 'HomeController@index');
