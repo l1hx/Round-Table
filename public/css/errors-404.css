@@ -1,0 +1,30 @@
+html, body {
+	background-color: #eee;
+	font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Microsoft Yahei";
+	margin: 0;
+	padding: 0;
+}
+
+div#wrapper {
+	margin: 20px auto;
+	max-width: 960px;
+}
+
+div#wrapper div#header {
+	margin-bottom: 20px;
+}
+
+div#wrapper div#content div#error-message {
+	padding-top: 180px;
+}
+
+div#wrapper div#footer {
+	color: #666;
+	margin-top: 20px;
+	text-align: center;
+}
+
+div#wrapper div#footer a {
+	color: #666;
+	text-decoration: none;
+}

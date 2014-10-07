@@ -258,7 +258,7 @@
                 return c.replace(/(^|\s)icon-\S+/g, ' icon-' + pageName);
             });
             $('#position > .position-name').html(pageDisplayName);
-            document.title = pageDisplayName + '| The Home of Class8';
+            document.title = pageDisplayName + ' | The Home of Class8';
         }
     </script>
     <script type="text/javascript">
