@@ -111,12 +111,12 @@
             var postData = 'username=' + username + '&password=' + password +
                             '&isAllowAutoLogin=' + rememberMe;
             $.ajax({
-                    type: 'POST',
-                    url: '<?php echo URL::to('/'); ?>/accounts/loginAction',
-                    data: postData,
-                    dataType: 'JSON',
-                    success: function(result){
-                        return processLoginResult(result);
+                type: 'POST',
+                url: '<?php echo URL::to('/'); ?>/accounts/loginAction',
+                data: postData,
+                dataType: 'JSON',
+                success: function(result){
+                    return processLoginResult(result);
                 }
             });
         }

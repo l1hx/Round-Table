@@ -148,33 +148,31 @@
     </script>
     <script type="text/javascript">
         $(window).scroll(function() {
-            var navbarPosition = $('#navigation-bar').position();
-            $(window).scroll(function() {
+            var navbarPosition = $('#navigation-bar').position(),
                 windowPosition = $(window).scrollTop();
-                $('#notify-box').css('display', 'none');
-                $('#profile').css('display', 'none');
-                if (windowPosition > navbarPosition.top) {
-                    $('#navigation-bar').addClass('fixed');
-                    $('#icon').css('margin-left', 0);
-                    $('#position').css('background-color', '#f5f5f5');
-                    $('#position').css('margin-left', 12);
-                    $('#position .position-name').css('display', 'none');
-                    $('#navigation-sidebar').css('top', 0);
-                    $('#footer').css('margin-bottom', 0);
+            $('#notify-box').css('display', 'none');
+            $('#profile').css('display', 'none');
+            if (windowPosition > navbarPosition.top) {
+                $('#navigation-bar').addClass('fixed');
+                $('#icon').css('margin-left', 0);
+                $('#position').css('background-color', '#f5f5f5');
+                $('#position').css('margin-left', 12);
+                $('#position .position-name').css('display', 'none');
+                $('#navigation-sidebar').css('top', 0);
+                $('#footer').css('margin-bottom', 0);
+            } else {
+                $('#navigation-bar').removeClass('fixed');
+                $('#icon').css('margin-left', -44);
+                $('#position').css('background-color', '#fff');
+                $('#position').css('margin-left', 30);
+                $('#position .position-name').css('display', 'inline-block');
+                if ( $(window).width() >= 768 ) {
+                    $('#navigation-sidebar').css('top', 68);
                 } else {
-                    $('#navigation-bar').removeClass('fixed');
-                    $('#icon').css('margin-left', -44);
-                    $('#position').css('background-color', '#fff');
-                    $('#position').css('margin-left', 30);
-                    $('#position .position-name').css('display', 'inline-block');
-                    if ( $(window).width() >= 768 ) {
-                        $('#navigation-sidebar').css('top', 68);
-                    } else {
-                        $('#navigation-sidebar').css('top', 196);
-                    }
-                    $('#footer').css('margin-bottom', 72);
+                    $('#navigation-sidebar').css('top', 196);
                 }
-            });
+                $('#footer').css('margin-bottom', 72);
+            }
         });
     </script>
     <script type="text/javascript">
