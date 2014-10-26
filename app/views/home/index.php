@@ -44,16 +44,18 @@
                     <div id="profile">
                         <div class="dropdown-shadow"></div> <!-- .dropdown-shadow -->
                         <div class="dropdown"></div> <!-- .dropdown -->
-                        <div id="brief-profile" class="row-fluid">
+                        <div class="row-fluid">
                             <div class="span4">
                                 <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($email)); ?>?s=200&d=mm" alt="avatar" />
                             </div> <!-- .span4 -->
                             <div class="span8">
-                                <div class="profile-field"><?php echo $username; ?></div>
-                                <div class="profile-field"><?php echo $email; ?></div>
-                                <button class="btn btn-primary" onclick="window.location.href='<?php echo URL::to('/'); ?>/home#profile'">查看个人资料</button>
+                                <div id="user-info">
+                                    <div class="profile-field"><?php echo $username; ?></div>
+                                    <div class="profile-field"><?php echo $email; ?></div>
+                                    <button class="btn btn-primary" onclick="window.location.href='<?php echo URL::to('/'); ?>/home#profile'">查看个人资料</button>
+                                </div> <!-- #user-info -->
                             </div> <!-- .span8 -->
-                        </div> <!-- #brief-profile -->
+                        </div> <!-- .row-fluid -->
                         <div id="sign-out">
                             <button class="btn" onclick="window.location.href='<?php echo URL::to('/'); ?>/accounts/login?logout=true'">退出</button>
                         </div> <!-- #sign-out -->

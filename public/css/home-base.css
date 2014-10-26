@@ -50,6 +50,14 @@ div.icon-hangouts {
 	background-position: -20px 0;
 }
 
+div.position-name {
+	color: #737373;
+	float: left;
+	font-size: 14px;
+	margin: 0 4px;
+	vertical-align: bottom;
+}
+
 div.dropdown {
 	border-color: transparent;
 	border-bottom-color: #fff;
@@ -107,6 +115,7 @@ div#header div#notification ul.inline {
 
 div#header div#notification ul.inline > li {
 	position: relative;
+	z-index: 128;
 }
 
 div#header div#notification ul.inline li a {
@@ -155,25 +164,28 @@ div#header div#notification div#profile div.dropdown-shadow {
 	top: -9px;
 }
 
-div#header div#notification div#profile div#brief-profile {
+div#header div#notification div#profile div.row-fluid {
     background: #fff;
     border-bottom: 1px solid #bebebe;
     width: 260px;
     box-shadow: 0 2px 4px rgba(0,0,0,.12);
 }
 
-div#header div#notification div#profile div#brief-profile div.span4 img {
+div#header div#notification div#profile div.row-fluid div.span4 img {
 	padding: 10px;
 	max-width: 100%;
 }
 
-div#header div#notification div#profile div#brief-profile div.span8 {
+div#header div#notification div#profile div.row-fluid div.span8 {
     color: #666;
     font-size: 13px;
+}
+
+div#header div#notification div#profile div.row-fluid div#user-info {
     padding: 10px;
 }
 
-div#header div#notification div#profile div#brief-profile div.span8 button {
+div#header div#notification div#profile div.row-fluid div.span8 button {
     margin-top: 10px;
 }
 
@@ -193,6 +205,8 @@ div#navigation-bar.fixed {
 	background-color: #fff;
 	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
 	width: 100%;
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
 	   -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
@@ -208,7 +222,7 @@ div#navigation-bar div#icon {
 	height: 44px;
 	width: 44px;
 	-webkit-transition: margin-left .15s linear;
-	transition: margin-left .15s linear;
+			transition: margin-left .15s linear;
 }
 
 div#navigation-bar div#position {
@@ -218,14 +232,6 @@ div#navigation-bar div#position {
 	float: left;
 	padding: 2px 5px 6px 8px;
 	margin: 7px 0 7px 30px;
-}
-
-div#navigation-bar div#position div.position-name {
-	color: #737373;
-	float: left;
-	font-size: 14px;
-	margin: 0 4px;
-	vertical-align: bottom;
 }
 
 div#navigation-bar div#position div.slide-down {
@@ -259,8 +265,9 @@ div#container div#navigation-sidebar a {
 }
 
 div#navigation-sidebar div.nav-item {
-	padding: 12px 0px 12px 32px;
 	margin-right: 8px;
+	overflow: hidden;
+	padding: 12px 0px 12px 32px;
 }
 
 div#navigation-sidebar div.nav-item:hover {
@@ -358,7 +365,7 @@ div#content {
 		display: none;
 	}
 
-	div#header div#notification div#profile div#brief-profile {
+	div#header div#notification div#profile div.row-fluid {
 		width: 160px;
 	}
 

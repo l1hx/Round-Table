@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>登录 | The Home of Class8</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
     <!-- CSS -->
@@ -13,6 +13,9 @@
     <!-- Java Script -->
     <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/md5.js"></script>
+    <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap-responsive-ie7.min.css" />
+    <![endif]-->
 </head>
 <body>
     <div id="wrapper">
@@ -21,29 +24,31 @@
                 <div id="header" class="span6">
                     <img src="<?php echo URL::to('/'); ?>/img/logo-light.png" alt="The Home of Class8" />
                 </div> <!-- #header -->
-                <form id="signin-form" class="span6" method="post" onsubmit="onSubmit(); return false;">
-                    <h1>登录</h1>
-                    <div id="signin-form-content">
-                        <div class="alert alert-error hide"></div>
-                    <?php if ( isset($isLoggout) && $isLoggout ): ?>
-                        <div class="alert alert-success">您已登出.</div>
-                    <?php endif; ?>
-                        <p>
-                            <label id="username-label" for="username">用户名</label>
-                            <input id="username" name="username" class="span12" type="text" maxlength="16" />
-                        </p>
-                        <p>
-                            <label id="password-label" for="password">密码<a class="pull-right" href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
-                            <input id="password" name="password" class="span12" type="password" maxlength="16" />
-                        </p>
-                        <p>
-                            <button type="submit" class="btn btn-primary">登录</button>
-                            <label id="remember">
-                                <input id="persistent-cookie" name="persistent-cookie" type="checkbox" /> 保持登录状态
-                            </label>
-                        </p>
-                    </div> <!-- #signin-form-content -->
-                </form> <!-- #signin-form -->
+                <div class="span6">
+                    <form id="signin-form" method="post" onsubmit="onSubmit(); return false;">
+                        <h1>登录</h1>
+                        <div id="signin-form-content">
+                            <div class="alert alert-error hide"></div>
+                        <?php if ( isset($isLoggout) && $isLoggout ): ?>
+                            <div class="alert alert-success">您已登出.</div>
+                        <?php endif; ?>
+                            <p>
+                                <label id="username-label" for="username">用户名</label>
+                                <input id="username" name="username" class="span12" type="text" maxlength="16" />
+                            </p>
+                            <p>
+                                <label id="password-label" for="password">密码<a class="pull-right" href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
+                                <input id="password" name="password" class="span12" type="password" maxlength="16" />
+                            </p>
+                            <p>
+                                <button type="submit" class="btn btn-primary">登录</button>
+                                <label id="remember">
+                                    <input id="persistent-cookie" name="persistent-cookie" type="checkbox" /> 保持登录状态
+                                </label>
+                            </p>
+                        </div> <!-- #signin-form-content -->
+                    </form> <!-- #signin-form -->
+                </div> <!-- .span6 -->
             </div> <!-- #main-content -->
         </div> <!-- #content -->
         <div id="footer">

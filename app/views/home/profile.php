@@ -37,7 +37,7 @@
         </div> <!-- .row -->
     </div> <!-- .block -->
     <div id="tip-block" class="block right">
-        <h4>及时更新个人信息</h4>
+        <h2>及时更新个人信息</h2>
         <p>您上次更新的时间是: 未知</p>
     </div> <!-- .block -->
     <div id="security-block" class="block left">
