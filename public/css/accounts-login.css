@@ -26,7 +26,7 @@ div#main-content {
 
 form#signin-form {
     background-color: #fff;
-    padding: 20px 30px 40px;
+    padding: 20px 30px;
     position: relative;
     z-index: 32;
     -webkit-border-radius: 4px;
@@ -49,6 +49,10 @@ form#signin-form input[type=password] {
 form#signin-form button,
 form#signin-form label#remember {
     float: left;
+}
+
+form#signin-form p {
+    overflow: hidden;
 }
 
 form#signin-form label#remember {
