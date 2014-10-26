@@ -1,6 +1,5 @@
 <link href="<?php echo URL::to('/'); ?>/css/home-people.css" media="screen" rel="stylesheet" type="text/css" />
 <h1>人脉圈</h1>
-<p class="slogan">也许我们身处异处, 但我们紧紧相依.</p>
 <ul id="people" class="thumbnails">
 <?php foreach ( $people as $person ): ?>
 	<li class="span2">

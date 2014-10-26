@@ -184,7 +184,9 @@ div#header div#notification div#profile div#sign-out {
 
 div#navigation-bar {
 	background-color: #f5f5f5;
+	position: relative;
 	height: 45px;
+	z-index: 64;
 }
 
 div#navigation-bar.fixed {
