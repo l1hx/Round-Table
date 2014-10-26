@@ -16,32 +16,32 @@
 </head>
 <body>
     <div id="wrapper">
-        <div id="content">
-            <div id="main-content">
-                <div id="header">
+        <div id="content" class="container">
+            <div id="main-content" class="row-fluid">
+                <div id="header" class="span6">
                     <img src="<?php echo URL::to('/'); ?>/img/logo-light.png" alt="The Home of Class8" />
                 </div> <!-- #header -->
-                <form id="signin-form" method="post" onsubmit="onSubmit(); return false;">
+                <form id="signin-form" class="span6" method="post" onsubmit="onSubmit(); return false;">
                     <h1>登录</h1>
                     <div id="signin-form-content">
                         <div class="alert alert-error hide"></div>
                     <?php if ( isset($isLoggout) && $isLoggout ): ?>
                         <div class="alert alert-success">您已登出.</div>
                     <?php endif; ?>
-                        <div id="username-controls" class="form-controls">
+                        <p>
                             <label id="username-label" for="username">用户名</label>
-                            <input id="username" name="username" type="text" maxlength="16" />
-                        </div> <!-- #username-controls -->
-                        <div id="password-controls" class="form-controls">
-                            <label id="password-label" for="password">密码</label>
-                            <label id="forget-password"><a href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
-                            <input id="password" name="password" type="password" maxlength="16" />
-                        </div> <!-- #password-controls -->
-                        <button id="submit" type="submit" class="btn btn-primary">登录</button>
-                        <label id="remember">
-                            <input id="persistent-cookie" name="persistent-cookie" type="checkbox">
-                            <label id="remember-label">保持登录状态</label>
-                        </label>
+                            <input id="username" name="username" class="span12" type="text" maxlength="16" />
+                        </p>
+                        <p>
+                            <label id="password-label" for="password">密码<a class="pull-right" href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
+                            <input id="password" name="password" class="span12" type="password" maxlength="16" />
+                        </p>
+                        <p>
+                            <button type="submit" class="btn btn-primary">登录</button>
+                            <label id="remember">
+                                <input id="persistent-cookie" name="persistent-cookie" type="checkbox" /> 保持登录状态
+                            </label>
+                        </p>
                     </div> <!-- #signin-form-content -->
                 </form> <!-- #signin-form -->
             </div> <!-- #main-content -->
@@ -130,10 +130,11 @@
                 } else if ( !result['isAccountValid'] ) {
                     displayErrorMessage('用户名或密码不正确.');
                 }
+
                 $('input[name=password]').val('');
+                $('button[type=submit]').html('登录');
+                $('button[type=submit]').removeAttr('disabled');
             }
-            $('button[type=submit]').html('登录');
-            $('button[type=submit]').removeAttr('disabled');
         }
     </script>
     <script type="text/javascript">
