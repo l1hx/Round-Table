@@ -1,0 +1,89 @@
+div#content {
+	padding-top: 20px; 
+	width: 960px;
+}
+
+div#content div.alert {
+	font-size: 12px;
+}
+
+div#content h1 {
+	margin-bottom: 20px;
+}
+
+div#content div.activity {
+	background-color: #fff;
+	border: 1px solid #d2d2d2;
+	font-size: 13px;
+	margin-bottom: 18px;
+	position: relative;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}
+
+div#content div.activity h3,
+div#content div.activity h4 {
+	font-weight: lighter;
+}
+
+div#content div.activity a {
+	font-size: 13px;
+	text-decoration: none;
+}
+
+div#content div.activity div.image {
+	text-align: center;
+}
+
+div#content div.activity div.image img {
+	width: 100%;
+}
+
+div#content div.activity div.detail {
+	color: #404040;
+	margin: 0 10px;
+	padding: 10px 0;
+}
+
+div#content div.activity div.detail div.row-fluid [class*="span"] {
+	min-height: 20px;
+}
+
+div#content div.activity div.attendance {
+	border-top: 1px solid #ccc;
+	color: #404040;
+	font-size: 12px;
+	margin: 0 10px;
+	padding: 10px 0;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+	
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	div#content {
+		width: 768px;
+	}
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	div#content {
+		width: 480px;
+	}
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	div#content {
+		width: 320px;
+	}
+}

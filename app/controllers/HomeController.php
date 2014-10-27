@@ -184,8 +184,21 @@ class HomeController extends BaseController {
         return array();
     }
 
+    /**
+     * 加载Activity页面的信息.
+     * 获取所有活动的信息.
+     * @return 一个包含所有活动信息的数组
+     */
     public function getActivity() {
-        return array();
+        $username           = Auth::user()->username;
+        $upcomingActivities = Activity::where('start_time', '>', date('Y-m-d H:i:s'))->orderBy('start_time', 'ASC')->get();
+        $pastActivities     = Activity::where('start_time', '<=', date('Y-m-d H:i:s'))->orderBy('start_time', 'DESC')->get();
+
+        return array(
+            'username'              => $username,
+            'upcomingActivities'    => $upcomingActivities,
+            'pastActivities'        => $pastActivities,
+        );
     }
 
     public function getVotes() {
