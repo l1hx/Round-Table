@@ -20,7 +20,7 @@
                     <span class="company"><?php echo $person['company']; ?></span>
                 </div> <!-- .location -->
                 <div class="contact">
-                    <span class="email"><i class="icon-envelope"></i> <a href="mailto:<?php echo $person['user']['email']; ?>" title="<?php echo $person['user']['email']; ?>"><?php echo $person['user']['email']; ?></a></span>
+                    <span class="email"><i class="icon-envelope"></i><a href="mailto:<?php echo $person['user']['email']; ?>" title="<?php echo $person['user']['email']; ?>"><?php echo $person['user']['email']; ?></a></span>
                     <span class="mobile"><i class="icon-phone"></i> <?php echo $person['mobile']; ?></a></span>
                 </div> <!-- .contact -->
             </div> <!-- .introduction -->

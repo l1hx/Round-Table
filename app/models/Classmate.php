@@ -24,5 +24,5 @@ class Classmate extends Eloquent {
      * 
      * @var array
      */
-    protected $guarded = array('username', 'birthday', 'country', 'city', 'mobile', 'qq');
+    protected $guarded = array('username', 'birthday', 'country', 'city', 'company', 'mobile', 'qq', 'updated_at');
 }

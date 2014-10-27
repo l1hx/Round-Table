@@ -62,9 +62,120 @@ class HomeController extends BaseController {
             'company'   => $profile->company,
             'mobile'    => $profile->mobile,
             'qq'        => $profile->qq,
+            'updatedAt' => $profile->updated_at,
         );
     }
 
+    /**
+     * 处理用户编辑个人资料的请求.
+     * @return 一个包含若干标志位的JSON数组
+     */
+    public function editProfileAction() {
+        $country    = strip_tags(Input::get('country'));
+        $city       = strip_tags(Input::get('city'));
+        $company    = strip_tags(Input::get('company'));
+
+        $result     = array(
+            'isSuccessful'      => false,
+            'isCountryEmpty'    => empty($country),
+            'isCountryLegal'    => mb_strlen($country, 'utf-8') <= 16,
+            'isCityEmpty'       => empty($city),
+            'isCityLegal'       => mb_strlen($city, 'utf-8') <= 16,
+            'isCompanyEmpty'    => empty($company),
+            'isCompanyLegal'    => mb_strlen($company, 'utf-8') <= 64,
+        );
+        $result['isSuccessful'] = !$result['isCountryEmpty'] && $result['isCountryLegal'] &&
+                                  !$result['isCityEmpty']    && $result['isCityLegal'] &&
+                                  !$result['isCompanyEmpty'] && $result['isCompanyLegal'];
+        
+        if ( $result['isSuccessful'] ) {
+            $username           = Auth::user()->username;
+            $profile            = Classmate::find($username);
+            
+            $profile->country   = $country;
+            $profile->city      = $city;
+            $profile->company   = $company;
+
+            $profile->save();
+        }
+        return Response::json($result);
+    }
+
+    /**
+     * 处理用户修改密码的请求.
+     * @return 一个包含若干标志位的JSON数组
+     */
+    public function editPasswordAction() {
+        $oldPassword        = md5(Input::get('oldPassword'));
+        $newPassword        = Input::get('newPassword');
+        $confirmPassword    = Input::get('confirmPassword');
+
+        $result             = array(
+            'isSuccessful'              => false,
+            'isOldPasswordEmpty'        => empty($oldPassword),
+            'isOldPasswordCorrect'      => true,
+            'isNewPasswordEmpty'        => empty($newPassword),
+            'isNewPasswordLegal'        => strlen($newPassword) >= 6 && strlen($newPassword) <= 16,
+            'isConfirmPasswordMatched'  => ( $newPassword == $confirmPassword ),
+        );
+        $result['isSuccessful']         = !$result['isOldPasswordEmpty'] && !$result['isNewPasswordEmpty'] && 
+                                           $result['isNewPasswordLegal'] &&  $result['isConfirmPasswordMatched'];
+
+        if ( $result['isSuccessful'] ) {
+            $username       = Auth::user()->username;
+            $user           = User::find($username);
+
+            if ( $user->password == $oldPassword ) {
+                $user->password  = md5($newPassword);
+                $user->save();
+            } else {
+                $result['isOldPasswordCorrect'] = false;
+            }
+        }
+        return Response::json($result);
+    }
+
+    /**
+     * 处理用户编辑联系信息的请求.
+     * @return 一个包含若干标志位的JSON数组
+     */
+    public function editContactAction() {
+        $email    = Input::get('email');
+        $mobile   = Input::get('mobile');
+        $qq       = Input::get('qq');
+
+        $result   = array(
+            'isSuccessful'      => false,
+            'isEmailEmpty'      => empty($email),
+            'isEmailLegal'      => strlen($email) <= 64 && preg_match('/^[A-Za-z0-9\._-]+@[A-Za-z0-9_-]+\.[A-Za-z0-9\._-]+$/', $email),
+            'isMobileEmpty'     => empty($mobile),
+            'isMobileLegal'     => preg_match('/^[+\-0-9]*[0-9]{8,12}$/', $mobile),
+            'isQQEmpty'         => empty($qq),
+            'isQQLegal'         => preg_match('/^[1-9][0-9]{4,11}$/', $qq),
+        );
+        $result['isSuccessful'] = !$result['isEmailEmpty']  && $result['isEmailLegal'] &&
+                                  !$result['isMobileEmpty'] && $result['isMobileLegal'] &&
+                                  !$result['isQQEmpty']     && $result['isQQLegal'];
+        
+        if ( $result['isSuccessful'] ) {
+            $username           = Auth::user()->username;
+            $user               = User::find($username);
+            $user->email        = $email;
+            $user->save();
+
+            $profile            = Classmate::find($username);
+            $profile->mobile    = $mobile;
+            $profile->qq        = $qq;
+            $profile->save();
+        }
+        return Response::json($result);
+    }
+
+    /**
+     * 加载People页面的信息.
+     * 获取所有用户的个人资料.
+     * @return 一个包含所有用户个人资料的数组
+     */
     public function getPeople() {
         return Classmate::with('user')->orderBy(DB::raw('CONVERT(username USING GBK)'))->get()->toArray();
     }

@@ -274,6 +274,10 @@
                 $('#navigation-sidebar').css('display', 'none');
             }
         });
+
+        $('#navigation-sidebar').click(function() {
+            $('#navigation-sidebar').css('display', 'none');
+        });
     </script>
 </body>
 </html>

@@ -24,3 +24,6 @@ Route::post('/accounts/resetPasswordAction', 'AccountsController@resetPasswordAc
 #HomeController的路由表
 Route::get('/home', 'HomeController@index');
 Route::get('/home/getPageContentAction', 'HomeController@getPageContentAction');
+Route::post('/home/editProfileAction', 'HomeController@editProfileAction');
+Route::post('/home/editPasswordAction', 'HomeController@editPasswordAction');
+Route::post('/home/editContactAction', 'HomeController@editContactAction');

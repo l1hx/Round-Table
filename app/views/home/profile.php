@@ -38,11 +38,17 @@
     </div> <!-- .block -->
     <div id="tip-block" class="block right">
         <h2>及时更新个人信息</h2>
-        <p>您上次更新的时间是: 未知</p>
+        <p>您上次更新的时间是:
+            <?php if ( $profile['updatedAt'] == '-0001-11-30 00:00:00' ): ?>
+            您尚未更新过个人信息.
+            <?php else: ?>
+            <?php echo date('Y年m月d日 H:i:s', strtotime($profile['updatedAt'])); ?>
+            <?php endif; ?>    
+        </p>
     </div> <!-- .block -->
     <div id="security-block" class="block left">
         <h2>账户安全</h2>
-        <a href="javascript:void();">修改密码</a>
+        <a href="javascript:void(0);">修改密码</a>
         <p class="tip">(您的密码会使用MD5加密存储)</p>
     </div> <!-- #security-block -->
     <div id="contact-block" class="block right">
@@ -91,13 +97,14 @@
         <h2>编辑个人资料</h2>
     </div> <!-- .modal-header -->
     <div class="modal-body">
+        <div class="alert alert-error hide"></div> <!-- .alert-error -->
         <div class="row-fluid">
             <div class="span4">所在国家</div>
-            <div class="span8"><input id="country" type="text" maxlength="24" value="<?php echo $profile['country']; ?>" /></div>
+            <div class="span8"><input id="country" type="text" maxlength="16" value="<?php echo $profile['country']; ?>" /></div>
         </div> <!-- .row-fluid -->
         <div class="row-fluid">
             <div class="span4">所在城市</div>
-            <div class="span8"><input id="city" type="text" maxlength="24" value="<?php echo $profile['city']; ?>" /></div>
+            <div class="span8"><input id="city" type="text" maxlength="16" value="<?php echo $profile['city']; ?>" /></div>
         </div> <!-- .row-fluid -->
         <div class="row-fluid">
             <div class="span4">所在学校/公司</div>
@@ -114,8 +121,9 @@
         <h2>修改密码</h2>
     </div> <!-- .modal-header -->
     <div class="modal-body">
+        <div class="alert alert-error hide"></div> <!-- .alert-error -->
         <div class="row-fluid">
-            <div class="span4">旧密码</div>
+            <div class="span4">当前密码</div>
             <div class="span8"><input id="old-password" type="password" maxlength="16" /></div>
         </div> <!-- .row-fluid -->
         <div class="row-fluid">
@@ -137,6 +145,7 @@
         <h2>编辑联系信息</h2>
     </div> <!-- .modal-header -->
     <div class="modal-body">
+        <div class="alert alert-error hide"></div> <!-- .alert-error -->
         <div class="row-fluid">
             <div class="span4">电子邮件</div>
             <div class="span8"><input id="email" type="text" maxlength="64" value="<?php echo $profile['email']; ?>" /></div>
@@ -156,3 +165,158 @@
     </div> <!-- .modal-footer -->
 </div> <!-- #password-modal -->
 <!-- Modals End -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    $('#profile-modal .btn-primary').click(function() {
+        var buttonObject = $(this),
+            modalObject  = $('#profile-modal'),
+            country      = $('input#country', modalObject).val(),
+            city         = $('input#city', modalObject).val(),
+            company      = $('input#company', modalObject).val(),
+            postData     = {
+                'country' : country,
+                'city'    : city,
+                'company' : company
+            };
+
+        $(buttonObject).html('正在处理...');
+        $(buttonObject).attr('disabled', 'disabled');
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo URL::to('/'); ?>/home/editProfileAction',
+            data: postData,
+            dataType: 'JSON',
+            success: function(result){
+                if ( result['isSuccessful'] ) {
+                    $('.alert-error', modalObject).addClass('hide');
+                    getPageContent('profile');
+                    $(modalObject).modal('hide');
+                } else {
+                    var errorMessage    = '';
+                    if ( result['isCountryEmpty'] ) {
+                        errorMessage   += '请填写您所在的国家.<br />';
+                    } else if ( !result['isCountryLegal'] ) {
+                        errorMessage   += '所在国家的名称不能超过16个字符.<br />';
+                    }
+                    if ( result['isCityEmpty'] ) {
+                        errorMessage   += '请填写您所在的城市.<br />';
+                    } else if ( !result['isCityLegal'] ) {
+                        errorMessage   += '所在城市的名称不能超过16个字符.<br />';
+                    }
+                    if ( result['isCompanyEmpty'] ) {
+                        errorMessage   += '请填写您所在的学校或公司名称.<br />';
+                    } else if ( !result['isCompanyLegal'] ) {
+                        errorMessage   += '所在学校或公司名称的名称不能超过64个字符.<br />';
+                    }
+                    $('.alert-error', modalObject).html(errorMessage);
+                    $('.alert-error', modalObject).removeClass('hide');
+                }
+                $(buttonObject).html('确认');
+                $(buttonObject).removeAttr('disabled');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#password-modal .btn-primary').click(function() {
+        var buttonObject    = $(this),
+            modalObject     = $('#password-modal'),
+            oldPassword     = $('input#old-password', modalObject).val(),
+            newPassword     = $('input#new-password', modalObject).val(),
+            confirmPassword = $('input#confirm-password', modalObject).val(),
+            postData        = {
+                'oldPassword'      : oldPassword,
+                'newPassword'      : newPassword,
+                'confirmPassword'  : confirmPassword
+            };
+
+        $(buttonObject).html('正在处理...');
+        $(buttonObject).attr('disabled', 'disabled');
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo URL::to('/'); ?>/home/editPasswordAction',
+            data: postData,
+            dataType: 'JSON',
+            success: function(result){
+                if ( result['isSuccessful'] ) {
+                    $('.alert-error', modalObject).addClass('hide');
+                    $(modalObject).modal('hide');
+                } else {
+                    var errorMessage    = '';
+                    if ( result['isOldPasswordEmpty'] ) {
+                        errorMessage   += '请输入您当前的密码.<br />';
+                    } else if ( !result['isOldPasswordCorrect'] ) {
+                        errorMessage   += '您所输入当前使用的密码不正确.<br />';
+                    }
+                    if ( result['isNewPasswordEmpty'] ) {
+                        errorMessage   += '请输入新密码.<br />';
+                    } else if ( !result['isNewPasswordLegal'] ) {
+                        errorMessage   += '新密码必须在6~16个字符之间.<br />';
+                    }
+                    if ( !result['isConfirmPasswordMatched'] ) {
+                        errorMessage   += '您所输入的确认密码和新密码不匹配.<br />';
+                    }
+                    $('.alert-error', modalObject).html(errorMessage);
+                    $('.alert-error', modalObject).removeClass('hide');
+                }
+                $(buttonObject).html('确认');
+                $(buttonObject).removeAttr('disabled');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#contact-modal .btn-primary').click(function() {
+        var buttonObject = $(this),
+            modalObject  = $('#contact-modal'),
+            email        = $('input#email', modalObject).val(),
+            mobile       = $('input#mobile', modalObject).val(),
+            qq           = $('input#qq', modalObject).val(),
+            postData     = {
+                'email'  : email,
+                'mobile' : mobile,
+                'qq'     : qq
+            };
+
+        $(buttonObject).html('正在处理...');
+        $(buttonObject).attr('disabled', 'disabled');
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo URL::to('/'); ?>/home/editContactAction',
+            data: postData,
+            dataType: 'JSON',
+            success: function(result){
+                if ( result['isSuccessful'] ) {
+                    $('.alert-error', modalObject).addClass('hide');
+                    getPageContent('profile');
+                    $(modalObject).modal('hide');
+                } else {
+                    var errorMessage    = '';
+                    if ( result['isEmailEmpty'] ) {
+                        errorMessage   += '请填写您的电子邮件地址.<br />';
+                    } else if ( !result['isEmailLegal'] ) {
+                        errorMessage   += '您所填写的电子邮件地址不合法.<br />';
+                    }
+                    if ( result['isMobileEmpty'] ) {
+                        errorMessage   += '请填写您的移动电话.<br />';
+                    } else if ( !result['isMobileLegal'] ) {
+                        errorMessage   += '您所填写的移动电话不合法.<br />';
+                    }
+                    if ( result['isQQEmpty'] ) {
+                        errorMessage   += '请填写您的QQ号码.<br />';
+                    } else if ( !result['isQQLegal'] ) {
+                        errorMessage   += '您所填写的QQ号码不合法.<br />';
+                    }
+                    $('.alert-error', modalObject).html(errorMessage);
+                    $('.alert-error', modalObject).removeClass('hide');
+                }
+                $(buttonObject).html('确认');
+                $(buttonObject).removeAttr('disabled');
+            }
+        });
+    });
+</script>

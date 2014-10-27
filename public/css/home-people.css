@@ -53,6 +53,17 @@ div#content div#main-content div.profile div.introduction span.mobile {
 	height: 20px;
 }
 
+div#content div#main-content div.profile div.introduction span.email i,
+div#content div#main-content div.profile div.introduction span.email a {
+	display: block;
+	float: left;
+}
+
+div#content div#main-content div.profile div.introduction span.email a {
+	margin-left: 5px;
+	width: 150px;
+}
+
 /* Smaller than standard 1200 (devices and browsers) */
 @media only screen and (max-width: 1199px) {
 }
