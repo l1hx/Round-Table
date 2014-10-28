@@ -9,7 +9,7 @@
     <?php if ( $counter % 2 == 0 ): ?>
         <div class="row-fluid">
     <?php endif; ?>
-            <div class="span6 activity">
+            <div id="activity-<?php echo $upcomingActivity->activity_id;?>" class="span6 activity">
                 <div class="image">
                     <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
                 </div> <!-- .activity-image -->
@@ -29,14 +29,20 @@
                     </div> <!-- .row-fluid -->
                 </div> <!-- .activity-detail -->
                 <div class="attendance">
-                    <h3>是否参加? <span class="pull-right">已有<?php echo $upcomingActivity->attendance()->count(); ?>人报名</span></h3>
-                    <p>
-                        <?php if ( $upcomingActivity->attendance()->where('username', '=', $activity['username'])->count() ): ?>
-                            <span>您已报名参加本次活动.</span>
-                        <?php else: ?>
-                            
-                        <?php endif; ?>
-                    </p>
+                <?php 
+                    $attendance = $upcomingActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->first();
+                    if ( $attendance != null && $attendance->pivot->is_attend ): 
+                ?>
+                    <span>您已报名参加本次活动.</span>
+                <?php elseif ( $attendance != null && !$attendance->pivot->is_attend ): ?>
+                    <span>您已确认不参加本次活动.</span>
+                <?php else: ?>
+                    <ul class="inline">
+                        <li class="accept"><a href="javascript:void(0);">参加</a></li>
+                        <li class="reject"><a href="javascript:void(0);">不参加</a></li>
+                    </ul>
+                <?php endif; ?>
+                    <span class="pull-right">已有<span class="participants"><?php echo $upcomingActivity->attendance()->where('is_attend', '=', 1)->count(); ?></span>人报名</span>
                 </div> <!-- .attendance -->
             </div> <!-- .activity -->
     <?php if ( ++ $counter % 2 == 0 ): ?>
@@ -81,12 +87,12 @@
                 </div> <!-- .activity-detail -->
                 <div class="attendance">
                     <p>
-                    <?php if ( $pastActivity->attendance()->where('username', '=', $activity['username'])->count() ): ?>
+                    <?php if ( $pastActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->where('is_attend', '=', 1)->count() ): ?>
                         <span>您参加了本次活动.</span>
                     <?php else: ?>
                         <span>您尚未参加本次活动.</span>
                     <?php endif; ?>
-                        <span>总计有<?php echo $pastActivity->attendance()->count(); ?>人参加了本次活动.</span>
+                        <span>总计有<?php echo $pastActivity->attendance()->where('is_attend', '=', 1)->count(); ?>人参加了本次活动.</span>
                     </p>
                 </div> <!-- .attendance -->
             </div> <!-- .activity -->
@@ -100,3 +106,33 @@
 <?php endif; ?>
 
 <!-- Modals -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    $('a', '.activity .attendance').click(function() {
+        var triggerObject   = $(this),
+            isAttend        = ($(this).parent().attr('class') == 'accept' ? 1 : 0),
+            activityObject  = $(this).parent().parent().parent().parent(),
+            activityId      = activityObject.attr('id').substring(9)
+            participants    = parseInt($('.participants', activityObject).html(), 10);
+
+        $.ajax({
+            type: 'GET',
+            async: false,
+            url: '<?php echo URL::to('/'); ?>/home/attendActivityAction?activityId=' + activityId + '&isAttend=' + isAttend,
+            dataType: 'JSON',
+            success: function(result){
+                if ( result['isSuccessful'] ) {
+                    if ( isAttend ) {
+                        $('ul.inline', activityObject).html('<li>您已报名参加本次活动.</li>');
+                        $('.participants', activityObject).html(participants + 1);
+                    } else {
+                        $('ul.inline', activityObject).html('<li>您已确认不参加本次活动.</li>');
+                    }
+                } else {
+                    alert('发生了未知错误, 请重试.');
+                }
+            }
+        });
+    });
+</script>

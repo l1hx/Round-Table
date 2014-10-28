@@ -6,7 +6,7 @@ class Activity extends Eloquent {
      * @return 活动参与成员情况
      */
     public function attendance() {
-        return $this->hasMany('ActivityAttendance');
+        return $this->belongsToMany('User', 'activity_attendance', 'activity_id','username')->withPivot('is_attend');
     }
 
     /**

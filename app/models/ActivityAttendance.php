@@ -20,5 +20,12 @@ class ActivityAttendance extends Eloquent {
      * 
      * @var array
      */
-    protected $guarded = array('activity_id', 'username', 'guests');
+    protected $guarded = array('activity_id', 'username', 'is_attend');
+
+    /**
+     * Disabled the `update_at` field in this table.
+     * 
+     * @var boolean
+     */
+    public $timestamps = false;
 }

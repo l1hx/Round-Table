@@ -201,6 +201,27 @@ class HomeController extends BaseController {
         );
     }
 
+    /**
+     * 处理用户参与活动的请求.
+     * @return 一个包含若干标志位的JSON数组
+     */
+    public function attendActivityAction() {
+        $activityId = Input::get('activityId');
+        $isAttend   = Input::get('isAttend', 0);
+        $username   = Auth::user()->username;
+        $result     = array(
+            'isSuccessful'          => true,
+        );
+
+        $activity   = Activity::find($activityId);
+        $activity->attendance()->attach(
+            $username, array(
+                'is_attend' => $isAttend,
+            )
+        );
+        return Response::json($result);
+    }
+
     public function getVotes() {
         return array();
     }

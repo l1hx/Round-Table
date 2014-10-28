@@ -55,7 +55,13 @@ div#content div.activity div.attendance {
 	color: #404040;
 	font-size: 12px;
 	margin: 0 10px;
+	overflow: hidden;
 	padding: 10px 0;
+}
+
+div#content div.activity div.attendance ul.inline {
+	margin-top: 0;
+	float: left;
 }
 
 /* Smaller than standard 960 (devices and browsers) */
