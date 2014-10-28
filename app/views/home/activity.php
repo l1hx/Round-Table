@@ -179,7 +179,6 @@
             url: '<?php echo URL::to('/'); ?>/home/getActivityAction?activityId=' + activityId,
             dataType: 'JSON',
             success: function(result) {
-                console.log(result);
                 if ( result['isSuccessful'] ) {
                     displayActivityDetail(result);
                 } else {
@@ -231,9 +230,10 @@
         mapObject = new AMap.Map("amap");
     }
 
-    function searchPlace(placeAddress) {
+    function searchPlace(address) {
         var MSearch;
 
+        mapObject.clearMap();
         mapObject.plugin(["AMap.PlaceSearch"], function() {       
             MSearch = new AMap.PlaceSearch({
                 pageSize: 10,
@@ -241,7 +241,7 @@
                 city: "0571"
             });
             AMap.event.addListener(MSearch, "complete", searchByKeyword);
-            MSearch.search(placeAddress);
+            MSearch.search(address);
         });
     }
 
