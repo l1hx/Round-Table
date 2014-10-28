@@ -772,19 +772,19 @@ h2 {
 }
 
 h3 {
-  font-size: 12.5px;
+  font-size: 14px;
 }
 
 h4 {
-  font-size: 9px;
+  font-size: 12.5px;
 }
 
 h5 {
-  font-size: 7px;
+  font-size: 10px;
 }
 
 h6 {
-  font-size: 6px;
+  font-size: 8px;
 }
 
 h1 small {
@@ -5522,7 +5522,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 10%;
   left: 50%;
   z-index: 1050;
@@ -5568,14 +5568,8 @@ input[type="submit"].btn.btn-mini {
 
 .modal-body {
   position: relative;
-  max-height: 324px;
   padding: 15px;
   overflow-y: auto;
-}
-
-.modal-body .span4 {
-  font-weight: bold;
-  padding-top: 4px;
 }
 
 .modal-body input[type=text],

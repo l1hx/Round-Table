@@ -27,4 +27,5 @@ Route::get('/home/getPageContentAction', 'HomeController@getPageContentAction');
 Route::post('/home/editProfileAction', 'HomeController@editProfileAction');
 Route::post('/home/editPasswordAction', 'HomeController@editPasswordAction');
 Route::post('/home/editContactAction', 'HomeController@editContactAction');
+Route::get('/home/getActivityAction', 'HomeController@getActivityAction');
 Route::get('/home/attendActivityAction', 'HomeController@attendActivityAction');

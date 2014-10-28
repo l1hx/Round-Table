@@ -20,6 +20,7 @@ div#wrapper div#content div#error-message {
 
 div#wrapper div#footer {
 	color: #666;
+	font-size: 12px;
 	margin-top: 20px;
 	text-align: center;
 }

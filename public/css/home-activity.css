@@ -64,6 +64,23 @@ div#content div.activity div.attendance ul.inline {
 	float: left;
 }
 
+div#content div#activity-detail {
+	font-size: 12px;
+}
+
+div#content div#activity-detail div#amap {
+	min-height: 200px;
+}
+
+div#content div#activity-detail p {
+	margin: 0;
+}
+
+div#content div#activity-detail ul.participants {
+	list-style: none;
+	margin: 0;
+}
+
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {
 	

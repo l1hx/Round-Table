@@ -202,6 +202,21 @@ class HomeController extends BaseController {
     }
 
     /**
+     * 获取某个活动的详细信息以及参加者的名单.
+     * @return 某个活动的详细信息
+     */
+    public function getActivityAction() {
+        $activityId = Input::get('activityId');
+        $activity   = Activity::with('attendance')->where('activity_id', '=', $activityId)->first();
+
+        $result     = array(
+            'isSuccessful'  => $activity != null,
+            'activity'      => $activity,
+        );
+        return Response::json($result);
+    }
+
+    /**
      * 处理用户参与活动的请求.
      * @return 一个包含若干标志位的JSON数组
      */
