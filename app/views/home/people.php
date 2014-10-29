@@ -1,7 +1,14 @@
 <link href="<?php echo URL::to('/'); ?>/css/home-people.css" media="screen" rel="stylesheet" type="text/css" />
 <div class="row-fluid">
     <div id="sidebar" class="span3">
-        Search not Implemented
+        <div id="filter">
+            <h2>快速筛选</h2>
+            <div class="input-append row-fluid">
+                <input type="text" />
+                <button class="btn btn-primary" type="button"><i class="icon-white icon-search"></i></button>
+            </div> <!-- .input-append -->
+            <p>您可以输入任意关键字(包括所在地, 电子邮件, 移动电话等)进行搜索</p>
+        </div> <!-- #filter -->
     </div> <!-- #sidebar -->
     <div id="main-content" class="span9">
         <h1>人脉</h1>
@@ -55,5 +62,43 @@
 </script>
 <script type="text/javascript">
     $(window).scroll(function() {
+        if ( $(window).width() >= 768 ) {
+            if ( $(window).scrollTop() >= 120 ) {
+                var sidebarWidth   = parseInt($('#sidebar').css('width'));
+                $('#sidebar').css('position', 'fixed');
+                $('#sidebar').css('top', 60);
+                $('#sidebar').css('width', sidebarWidth);
+                $('#main-content').css('margin-left', $('#sidebar').width() + 20);
+            } else {
+                $('#sidebar').css('position', 'static');
+                $('#main-content').css('margin-left', 20);
+            }
+        }
     });
+</script>
+<script type="text/javascript">
+    $('button', '#filter').click(function() {
+        var keyword = $('input', '#filter').val();
+        return filterClassmates(keyword);
+    });
+</script>
+<script type="text/javascript">
+    function filterClassmates(keyword) {
+        $('.profile').each(function() {
+            var name        = ('h2', $(this)).html(),
+                country     = ('.country', $(this)).html(),
+                city        = ('.city', $(this)).html(),
+                company     = ('.company', $(this)).html(),
+                email       = ('.email', $(this)).html(),
+                phone       = ('.phone', $(this)).html();
+
+            if ( name.indexOf(keyword) == -1  && country.indexOf(keyword) == -1 &&
+                 city.indexOf(keyword) == -1  && company.indexOf(keyword) == -1 && 
+                 email.indexOf(keyword) == -1 && phone.indexOf(keyword) == -1 ) {
+                $(this).addClass('hide');
+            } else {
+                $(this).removeClass('hide');
+            }
+        });
+    }
 </script>
