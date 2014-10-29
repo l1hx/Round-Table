@@ -23,6 +23,13 @@ class EmailValidation extends Eloquent {
     protected $guarded = array('email', 'keycode');
 
     /**
+     * The field needs to be filled when ::create() method is invoked.
+     * 
+     * @var array
+     */
+    protected $fillable = array('email', 'keycode');
+
+    /**
      * Disable `updated_at` and `create_at` columns.
      */
     public $timestamps = false;

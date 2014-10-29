@@ -137,11 +137,10 @@ class AccountsController extends BaseController {
             $confidential->delete();
         }
 
-        $confidential = new EmailValidation;
-        $confidential->email    = $email;
-        $confidential->keycode  = $keycode;
-
-        $confidential->save();
+        EmailValidation::create(array(
+            'email'     => $email,
+            'keycode'   => $keycode,
+        ));
     }
 
     /**

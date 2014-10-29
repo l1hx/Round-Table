@@ -237,6 +237,49 @@ class HomeController extends BaseController {
         return Response::json($result);
     }
 
+    /**
+     * 处理用户创建活动的请求.
+     * @return 一个包含若干标志位的JSON数组
+     */
+    public function createActivityAction() {
+        $activityName   = strip_tags(Input::get('activityName'));
+        $sponsor        = Auth::user()->username;
+        $startTime      = Input::get('startTime');
+        $endTime        = Input::get('endTime');
+        $place          = strip_tags(Input::get('place'));
+        $detail         = strip_tags(Input::get('detail'));
+
+        $result         = array(
+            'isSuccessful'          => false,
+            'isActivityNameEmpty'   => empty($activityName),
+            'isActivityNameLegal'   => mb_strlen($activityName, 'utf-8') <= 32,
+            'isStartTimeEmpty'      => empty($startTime),
+            'isStartTimeLegal'      => strtotime(date('Y-m-d H:i:s')) < strtotime($startTime),
+            'isEndTimeEmpty'        => empty($endTime),
+            'isEndTimeLegal'        => strtotime($startTime) < strtotime($endTime),
+            'isPlaceEmpty'          => empty($place),
+            'isPlaceLegal'          => mb_strlen($place, 'utf-8') <= 128,
+            'isDetailEmpty'         => empty($detail),
+        );
+        $result['isSuccessful']     = !$result['isActivityNameEmpty'] && $result['isActivityNameLegal'] &&
+                                      !$result['isStartTimeEmpty']    && $result['isStartTimeLegal'] &&
+                                      !$result['isEndTimeEmpty']      && $result['isEndTimeLegal'] &&
+                                      !$result['isPlaceEmpty']        && $result['isPlaceLegal'] &&
+                                      !$result['isDetailEmpty'];
+
+        if ( $result['isSuccessful'] ) {
+            Activity::create(array(
+                'activity_name' => $activityName,
+                'sponsor'       => $sponsor,
+                'start_time'    => $startTime,
+                'end_time'      => $endTime,
+                'place'         => $place,
+                'detail'        => $detail,
+            ));
+        }
+        return Response::json($result);
+    }
+
     public function getVotes() {
         return array();
     }

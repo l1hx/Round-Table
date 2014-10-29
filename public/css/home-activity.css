@@ -64,6 +64,23 @@ div#content div.activity div.attendance ul.inline {
 	float: left;
 }
 
+div#content div#new-activity div.span4 {
+	padding-top: 4px;
+}
+
+div#content div#new-activity div.span4 label {
+	font-weight: bold;
+}
+
+div#content div#new-activity div.input-append span.add-on {
+	border-radius: 0px;
+}
+
+div#content div#new-activity textarea {
+	border-radius: 0px;
+	resize: none;
+}
+
 div#content div#activity-detail {
 	font-size: 12px;
 }
@@ -83,7 +100,9 @@ div#content div#activity-detail ul.participants {
 
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {
-	
+	div.modal {
+		position: absolute;
+	}
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */

@@ -190,7 +190,6 @@
             dataType: 'JSON',
             success: function(result){
                 if ( result['isSuccessful'] ) {
-                    $('.alert-error', modalObject).addClass('hide');
                     getPageContent('profile');
                     $(modalObject).modal('hide');
                 } else {
@@ -291,7 +290,6 @@
             dataType: 'JSON',
             success: function(result){
                 if ( result['isSuccessful'] ) {
-                    $('.alert-error', modalObject).addClass('hide');
                     getPageContent('profile');
                     $(modalObject).modal('hide');
                 } else {

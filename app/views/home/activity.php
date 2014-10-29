@@ -1,4 +1,5 @@
 <link href="<?php echo URL::to('/'); ?>/css/home-activity.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="<?php echo URL::to('/'); ?>/css/bootstrap.datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css">
 <!-- Upcoming Activities -->
 <h1>即将开始的活动<button class="btn btn-primary pull-right">创建新活动</button></h1>
 <?php if ( $activity['upcomingActivities']->count() ): ?>
@@ -106,6 +107,64 @@
 <?php endif; ?>
 
 <!-- Modals -->
+<div id="new-activity" class="modal fade hide">
+    <div class="modal-header">
+        <h2>创建新活动</h2>
+    </div> <!-- .modal-header -->
+    <div class="modal-body">
+        <div class="alert alert-error hide"></div> <!-- .alert-error -->
+        <div class="row-fluid">
+            <div class="span4">
+                <label for="activity-name">活动名称</label>
+            </div> <!-- .span4 -->
+            <div class="span8">
+                <input id="activity-name" class="span12" type="text" maxlength="32" />
+            </div> <!-- .span8 -->
+        </div> <!-- .row-fluid -->
+        <div class="row-fluid">
+            <div class="span4">
+                <label for="start-time">活动开始时间</label>
+            </div> <!-- .span4 -->
+            <div class="span8">
+                <div class="controls input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
+                    <input id="start-time" class="span12" type="text" value="" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div> <!-- .input-append -->
+            </div> <!-- .span8 -->
+        </div> <!-- .row-fluid -->
+        <div class="row-fluid">
+            <div class="span4">
+                <label for="end-time">活动结束时间</label>
+            </div> <!-- .span4 -->
+            <div class="span8">
+                <div class="controls input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
+                    <input id="end-time" class="span12" type="text" value="" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div> <!-- .input-append -->
+            </div> <!-- .span8 -->
+        </div> <!-- .row-fluid -->
+        <div class="row-fluid">
+            <div class="span4">
+                <label for="place">活动地点</label>
+            </div> <!-- .span4 -->
+            <div class="span8">
+                <input id="place" class="span12" type="text" maxlength="128" />
+            </div> <!-- .span8 -->
+        </div> <!-- .row-fluid -->
+        <div class="row-fluid">
+            <div class="span4">
+                <label for="detail">详细说明</label>
+            </div> <!-- .span4 -->
+            <div class="span8">
+                <textarea id="detail" class="span12" rows="5"></textarea>
+            </div> <!-- .span8 -->
+        </div> <!-- .row-fluid -->
+    </div> <!-- .modal-body -->
+    <div class="modal-footer">
+        <button class="btn btn-primary">确认</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+    </div> <!-- .modal-footer -->
+</div> <!-- #new-activity -->
 <div id="activity-detail" class="modal fade hide">
     <div class="modal-header">
         <h2>活动详细信息</h2>
@@ -120,7 +179,7 @@
                 <p><i class="icon-user"></i> <span class="sponsor"></span></p>
                 <p><i class="icon-calendar"></i> <span class="time"></span></p>
                 <p><i class="icon-map-marker"></i> <span class="place"></span></p>
-                <h3>详细信息</h3>
+                <h3>详细说明</h3>
                 <p class="detail"></p>
             </div> <!-- .span8 -->
             <div class="span4">
@@ -135,6 +194,81 @@
 </div> <!-- #activity-detail -->
 
 <!-- JavaScript -->
+<script type="text/javascript">
+    $('button.pull-right').click(function() {
+        $('#new-activity input').val('');
+        $('#new-activity textarea').val('');
+
+        $('#new-activity').modal({
+            'backdrop': 'static'
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('.btn-primary', '#new-activity').click(function() {
+        var buttonObject = $(this),
+            modalObject  = $('#new-activity'),
+            activityName = $('#activity-name', modalObject).val(),
+            startTime    = $('#start-time', modalObject).val(),
+            endTime      = $('#end-time', modalObject).val(),
+            place        = $('#place', modalObject).val(),
+            detail       = $('#detail', modalObject).val(),
+            postData     = {
+                'activityName': activityName,
+                'startTime'   : startTime,
+                'endTime'     : endTime,
+                'place'       : place,
+                'detail'      : detail
+            };
+
+        $(buttonObject).html('正在处理...');
+        $(buttonObject).attr('disabled', 'disabled');
+
+        $.ajax({
+            type: 'POST',
+            async: false,
+            url: '<?php echo URL::to('/'); ?>/home/createActivityAction',
+            data: postData,
+            dataType: 'JSON',
+            success: function(result){
+                if ( result['isSuccessful'] ) {
+                    getPageContent('activity');
+                    $(modalObject).modal('hide');
+                } else {
+                    var errorMessage  = '';
+                    if ( result['isActivityNameEmpty'] ) {
+                        errorMessage += '请填写活动名称.<br />';
+                    } else if ( !result['isActivityNameLegal'] ) {
+                        errorMessage += '活动名称的长度不能超过32个字符.<br />';
+                    }
+                    if ( result['isStartTimeEmpty'] ) {
+                        errorMessage += '请填写活动开始时间.<br />';
+                    } else if ( !result['isStartTimeLegal'] ) {
+                        errorMessage += '活动开始时间不得早于当前时间.<br />';
+                    }
+                    if ( result['isEndTimeEmpty'] ) {
+                        errorMessage += '请填写活动结束时间.<br />';
+                    } else if ( !result['isEndTimeLegal'] ) {
+                        errorMessage += '活动结束时间不得早于活动开始时间.<br />';
+                    }
+                    if ( result['isPlaceEmpty'] ) {
+                        errorMessage += '请填写活动地点.<br />';
+                    } else if ( !result['isPlaceLegal'] ) {
+                        errorMessage += '活动地点的长度不得超过128个字符.<br />';
+                    }
+                    if ( result['isDetailEmpty'] ) {
+                        errorMessage += '请填写活动详细说明.<br />';
+                    }
+                    $('.alert-error', modalObject).html(errorMessage);
+                    $('.alert-error', modalObject).removeClass('hide');
+                }
+
+                $(buttonObject).html('确认');
+                $(buttonObject).removeAttr('disabled');
+            }
+        });
+    });
+</script>
 <script type="text/javascript">
     $('a', '.activity .attendance').click(function() {
         var triggerObject   = $(this),
@@ -175,7 +309,6 @@
     function getActivityDetail(activityId) {
         $.ajax({
             type: 'GET',
-            async: false,
             url: '<?php echo URL::to('/'); ?>/home/getActivityAction?activityId=' + activityId,
             dataType: 'JSON',
             success: function(result) {
@@ -205,7 +338,6 @@
         for ( var i = 0; i < numberOfParticipants; ++ i ) {
             $('.participants', '#activity-detail').append('<li>' + result['activity']['attendance'][i]['username'] + '</li>');
         }
-
         searchPlace(result['activity']['place']);
         $('#activity-detail').modal();
     }
@@ -219,6 +351,28 @@
             minute  = dateTimeString.substr(14, 2);
         return year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
     }
+</script>
+<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+    function initializeDateTimePicker() {
+        $('.form_datetime').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            startDate: '<?php echo date('Y-m-d H:i:s');?>',
+            forceParse: 0,
+            showMeridian: 1
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        initializeDateTimePicker();
+    });
 </script>
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=c8217ee6277393d58ee271ca70288e66&callback=initializeMap"></script>
 <script type="text/javascript">

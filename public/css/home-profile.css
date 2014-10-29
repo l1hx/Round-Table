@@ -82,8 +82,11 @@ div.modal {
 }
 
 div.modal-body div.span4 {
-	font-weight: bold;
 	padding-top: 4px;
+}
+
+div.modal-body div.span4 label {
+	font-weight: bold;
 }
 
 /* Smaller than standard 960 (devices and browsers) */
