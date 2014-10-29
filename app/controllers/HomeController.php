@@ -191,8 +191,8 @@ class HomeController extends BaseController {
      */
     public function getActivity() {
         $username           = Auth::user()->username;
-        $upcomingActivities = Activity::where('start_time', '>', date('Y-m-d H:i:s'))->orderBy('start_time', 'ASC')->get();
-        $pastActivities     = Activity::where('start_time', '<=', date('Y-m-d H:i:s'))->orderBy('start_time', 'DESC')->get();
+        $upcomingActivities = Activity::where('activity_start_time', '>', date('Y-m-d H:i:s'))->orderBy('activity_start_time', 'ASC')->get();
+        $pastActivities     = Activity::where('activity_start_time', '<=', date('Y-m-d H:i:s'))->orderBy('activity_start_time', 'DESC')->get();
 
         return array(
             'username'              => $username,
@@ -269,12 +269,12 @@ class HomeController extends BaseController {
 
         if ( $result['isSuccessful'] ) {
             Activity::create(array(
-                'activity_name' => $activityName,
-                'sponsor'       => $sponsor,
-                'start_time'    => $startTime,
-                'end_time'      => $endTime,
-                'place'         => $place,
-                'detail'        => $detail,
+                'activity_name'       => $activityName,
+                'activity_sponsor'    => $sponsor,
+                'activity_start_time' => $startTime,
+                'activity_end_time'   => $endTime,
+                'activity_place'      => $place,
+                'activity_detail'     => $detail,
             ));
             $this->sendActivityEmails($activityName, $sponsor);
         }

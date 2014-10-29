@@ -19,13 +19,13 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <i class="icon-calendar"></i>
-                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->end_time)); ?></span>
+                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_end_time)); ?></span>
                         </div>
                     </div> <!-- .row-fluid -->
                     <div class="row-fluid">
                         <div class="span12">
                             <i class="icon-map-marker"></i>
-                            <span class="place"><?php echo $upcomingActivity->place; ?></span>
+                            <span class="place"><?php echo $upcomingActivity->activity_place; ?></span>
                         </div>
                     </div> <!-- .row-fluid -->
                 </div> <!-- .activity-detail -->
@@ -76,13 +76,13 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <i class="icon-calendar"></i>
-                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($pastActivity->start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($pastActivity->end_time)); ?></span>
+                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_end_time)); ?></span>
                         </div>
                     </div> <!-- .row-fluid -->
                     <div class="row-fluid">
                         <div class="span12">
                             <i class="icon-map-marker"></i>
-                            <span class="place"><?php echo $pastActivity->place; ?></span>
+                            <span class="place"><?php echo $pastActivity->activity_place; ?></span>
                         </div>
                     </div> <!-- .row-fluid -->
                 </div> <!-- .activity-detail -->
@@ -321,12 +321,12 @@
 </script>
 <script type="text/javascript">
     function displayActivityDetail(result) {
-        $('.sponsor', '#activity-detail').html(result['activity']['sponsor']);
-        $('.time', '#activity-detail').html(getDateTime(result['activity']['start_time']) + '~' + getDateTime(result['activity']['end_time']));
-        $('.place', '#activity-detail').html(result['activity']['place']);
+        $('.sponsor', '#activity-detail').html(result['activity']['activity_sponsor']);
+        $('.time', '#activity-detail').html(getDateTime(result['activity']['activity_start_time']) + '~' + getDateTime(result['activity']['activity_end_time']));
+        $('.place', '#activity-detail').html(result['activity']['activity_place']);
         
-        if ( result['activity']['detail'] ) {
-            $('.detail', '#activity-detail').html(result['activity']['detail']);
+        if ( result['activity']['activity_detail'] ) {
+            $('.detail', '#activity-detail').html(result['activity']['activity_detail']);
         } else {
             $('.detail', '#activity-detail').html('暂无对活动的详细说明.');
         }
@@ -336,7 +336,7 @@
         for ( var i = 0; i < numberOfParticipants; ++ i ) {
             $('.participants', '#activity-detail').append('<li>' + result['activity']['attendance'][i]['username'] + '</li>');
         }
-        searchPlace(result['activity']['place']);
+        searchPlace(result['activity']['activity_place']);
         $('#activity-detail').modal();
     }
 </script>

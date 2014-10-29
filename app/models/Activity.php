@@ -28,14 +28,16 @@ class Activity extends Eloquent {
      * 
      * @var array
      */
-    protected $guarded = array('activity_id', 'activity_name', 'create_time', 'sponsor', 'start_time', 'end_time', 'place', 'detail');
+    protected $guarded = array('activity_id', 'activity_name', 'activity_create_time', 'activity_sponsor', 
+                               'activity_start_time', 'activity_end_time', 'activity_place', 'activity_detail');
 
     /**
      * The field needs to be filled when ::create() method is invoked.
      * 
      * @var array
      */
-    protected $fillable = array('activity_name', 'sponsor', 'start_time', 'end_time', 'place', 'detail');
+    protected $fillable = array('activity_name', 'activity_sponsor', 'activity_start_time', 'activity_end_time', 
+                                'activity_place', 'activity_detail');
 
     /**
      * Disabled the `update_at` field in this table.
