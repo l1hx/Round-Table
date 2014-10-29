@@ -276,8 +276,46 @@ class HomeController extends BaseController {
                 'place'         => $place,
                 'detail'        => $detail,
             ));
+            $this->sendActivityEmails($activityName, $sponsor);
         }
+
         return Response::json($result);
+    }
+
+    /**
+     * 发送电子邮件通知用户确认活动信息.
+     * @param  String $activityName - 活动名称
+     * @param  String $sponsor      - 活动发起人的姓名
+     */
+    private function sendActivityEmails($activityName, $sponsor) {
+        $classmates = Classmate::with('user')->get()->toArray();
+
+        foreach ( $classmates as $classmate ) {
+            $email      = $classmate['user']['email'];
+            $username   = $classmate['username'];
+            if ( !empty($email) ) {
+                $this->sendActivityEmail($username, $activityName, $sponsor, $email);
+            }
+        }
+    }
+
+    /**
+     * 发送电子邮件通知用户确认活动信息.
+     * @param  String $username     - 被通知用户的用户名
+     * @param  String $activityName - 活动名称
+     * @param  String $sponsor      - 活动发起人的姓名
+     * @param  String $email        - 被通知用户的电子邮件地址
+     */
+    private function sendActivityEmail($username, $activityName, $sponsor, $email) {
+        $data       = array(
+            'username'      => $username,
+            'activityName'  => $activityName,
+            'sponsor'       => $sponsor,
+        );
+        Mail::queue('mails.activity', $data, function($message) use ($activityName, $email) {
+            $message->from('noreply@zjhzxhz.com', 'The Home of Class8')->subject('诚邀您参加'.$activityName);
+            $message->to($email);
+        });
     }
 
     public function getVotes() {

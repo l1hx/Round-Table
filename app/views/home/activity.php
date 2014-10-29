@@ -226,7 +226,6 @@
 
         $.ajax({
             type: 'POST',
-            async: false,
             url: '<?php echo URL::to('/'); ?>/home/createActivityAction',
             data: postData,
             dataType: 'JSON',
@@ -279,7 +278,6 @@
 
         $.ajax({
             type: 'GET',
-            async: false,
             url: '<?php echo URL::to('/'); ?>/home/attendActivityAction?activityId=' + activityId + '&isAttend=' + isAttend,
             dataType: 'JSON',
             success: function(result){
