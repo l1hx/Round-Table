@@ -332,8 +332,4 @@ class HomeController extends BaseController {
 
         );
     }
-
-    public function getHangouts() {
-        return array();
-    }
 }
