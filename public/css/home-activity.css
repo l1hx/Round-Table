@@ -12,6 +12,7 @@ div#content h1 {
 }
 
 div#content div.section-header div.span4 {
+	padding-top: 5px;
 	text-align: right;
 }
 

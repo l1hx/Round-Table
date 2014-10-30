@@ -318,8 +318,19 @@ class HomeController extends BaseController {
         });
     }
 
+    /**
+     * 加载Vote页面的信息.
+     * 获取所有投票的信息.
+     * @return 
+     */
     public function getVotes() {
-        return array();
+        $username           = Auth::user()->username;
+        $openingVotes       = null;
+        $closedVotes        = null;
+
+        return array(
+
+        );
     }
 
     public function getHangouts() {

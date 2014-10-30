@@ -63,12 +63,16 @@
         </div> <!-- .row-fluid -->
     <?php endif; ?>
 <?php else: ?>
-    <div class="alert alert-warning">暂时没有新的活动.</div> <!-- .alert-info -->
+    <div class="alert alert-warning">暂时没有即将开始的活动.</div> <!-- .alert-info -->
 <?php endif; ?>
 
 <!-- Past Activities -->
 <?php if ( $activity['pastActivities']->count() ): ?>
-    <h1>已经结束的活动</h1>
+<div class="section-header row-fluid">
+    <div class="span8">
+        <h1>已经结束的活动</h1>
+    </div> <!-- .span8 -->
+</div> <!-- .row-fluid -->
     <?php 
         $counter = 0;
         foreach ( $activity['pastActivities'] as $pastActivity ): 
@@ -115,6 +119,8 @@
     <?php if ( $counter % 2 != 0 ): ?>
         </div> <!-- .row-fluid -->
     <?php endif; ?>
+<?php else: ?>
+    <div class="alert alert-warning">暂时没有已经结束的活动.</div> <!-- .alert-info -->
 <?php endif; ?>
 
 <!-- Modals -->

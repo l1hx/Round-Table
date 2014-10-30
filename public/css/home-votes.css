@@ -3,6 +3,50 @@ div#content {
 	width: 960px;
 }
 
+
+div#content div.alert {
+	font-size: 12px;
+}
+
+div#content h1 {
+	margin: 10px 0;
+}
+
+div#content div.section-header div.span4 {
+	padding-top: 5px;
+	text-align: right;
+}
+
+div#content div.span6 {
+	padding-bottom: 20px;
+}
+
+div#content div.vote {
+	background-color: #fff;
+	border: 1px solid #d2d2d2;
+	font-size: 13px;
+	padding: 10px;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}
+
+div#content div.vote ul.options {
+	list-style: none;
+	margin-left: 0;
+}
+
+div#content div.vote ul.options label {
+	display: inline;
+	font-size: 13px;
+}
+
+div#content div.vote p.tip {
+	border-top: 1px dotted #ccc;
+	padding-top: 10px;
+	text-align: right;
+}
+
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {
 }
@@ -16,6 +60,14 @@ div#content {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
+	div#content div.section-header div.span8,
+	div#content div.section-header div.span4 {
+		text-align: center;
+	}
+
+	div#content div.section-header div.span4 {
+		margin-bottom: 10px;
+	}
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
