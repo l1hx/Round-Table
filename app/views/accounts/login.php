@@ -13,12 +13,28 @@
     <!-- Java Script -->
     <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/md5.js"></script>
-    <!--[if lte IE 7]>
-        <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap-responsive-ie7.min.css" />
-    <![endif]-->
 </head>
 <body>
     <div id="wrapper">
+        <!--[if lte IE 8]>
+        <div id="upgrade-browser">
+            <div class="row-fluid container">
+                <div class="span8">
+                    <div class="notice">
+                        <h3>您正在使用的浏览器已经不再被支持. 请升级您的浏览器!</h3>
+                        <p>
+                            我们推荐您使用最新版本的<a href="http://windows.microsoft.com/zh-cn/windows/upgrade-your-browser">Internet Explorer</a>, <a href="http://chrome.google.com">Google Chrome</a>或<a href="https://mozilla.org/firefox">Firefox</a>浏览器.<br />
+                            如果您正在使用360或搜狗浏览器, 请切换至极速内核模式.
+                        </p>
+                    </div>
+                </div>
+                <div class="span4">
+                    <button class="btn btn-primary">了解更多</button>
+                    <button class="btn btn-danger">忽略</button>
+                </div>
+            </div>
+        </div>
+        <![endif]-->
         <div id="content" class="container">
             <div id="main-content" class="row-fluid">
                 <div id="header" class="span6">
@@ -37,7 +53,7 @@
                                 <input id="username" name="username" class="span12" type="text" maxlength="16" />
                             </p>
                             <p>
-                                <label id="password-label" for="password">密码<a class="pull-right" href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a></label>
+                                <label id="password-label" for="password"><a class="pull-right" href="<?php echo URL::to('/'); ?>/accounts/resetPassword">忘记密码?</a>密码</label>
                                 <input id="password" name="password" class="span12" type="password" maxlength="16" />
                             </p>
                             <p>
@@ -148,6 +164,11 @@
             errorMessageBox.html(message);
             errorMessageBox.removeClass('hide');
         }
+    </script>
+    <script type="text/javascript">
+        $('.btn-danger', '#upgrade-browser').click(function() {
+            $('#upgrade-browser').addClass('hide');
+        });
     </script>
 </body>
 </html>

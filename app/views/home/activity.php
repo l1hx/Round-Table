@@ -1,7 +1,14 @@
 <link href="<?php echo URL::to('/'); ?>/css/home-activity.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="<?php echo URL::to('/'); ?>/css/bootstrap.datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css">
 <!-- Upcoming Activities -->
-<h1>即将开始的活动<button class="btn btn-primary pull-right">创建新活动</button></h1>
+<div class="section-header row-fluid">
+    <div class="span8">
+        <h1>即将开始的活动</h1>
+    </div> <!-- .span8 -->
+    <div class="span4">
+        <button id="create-activity" class="btn btn-primary">创建新活动</button>
+    </div> <!-- .span4 -->
+</div> <!-- .row-fluid -->
 <?php if ( $activity['upcomingActivities']->count() ): ?>
     <?php 
         $counter = 0;
@@ -10,42 +17,44 @@
     <?php if ( $counter % 2 == 0 ): ?>
         <div class="row-fluid">
     <?php endif; ?>
-            <div id="activity-<?php echo $upcomingActivity->activity_id;?>" class="span6 activity">
-                <div class="image">
-                    <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
-                </div> <!-- .activity-image -->
-                <div class="detail">
-                    <h2><?php echo $upcomingActivity->activity_name; ?><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span></h2>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <i class="icon-calendar"></i>
-                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_end_time)); ?></span>
-                        </div>
-                    </div> <!-- .row-fluid -->
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <i class="icon-map-marker"></i>
-                            <span class="place"><?php echo $upcomingActivity->activity_place; ?></span>
-                        </div>
-                    </div> <!-- .row-fluid -->
-                </div> <!-- .activity-detail -->
-                <div class="attendance">
-                <?php 
-                    $attendance = $upcomingActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->first();
-                    if ( $attendance != null && $attendance->pivot->is_attend ): 
-                ?>
-                    <span>您已报名参加本次活动.</span>
-                <?php elseif ( $attendance != null && !$attendance->pivot->is_attend ): ?>
-                    <span>您已确认不参加本次活动.</span>
-                <?php else: ?>
-                    <ul class="inline">
-                        <li class="accept"><a href="javascript:void(0);">参加</a></li>
-                        <li class="reject"><a href="javascript:void(0);">不参加</a></li>
-                    </ul>
-                <?php endif; ?>
-                    <span class="pull-right">已有<span class="participants"><?php echo $upcomingActivity->attendance()->where('is_attend', '=', 1)->count(); ?></span>人报名</span>
-                </div> <!-- .attendance -->
-            </div> <!-- .activity -->
+            <div class="span6">
+                <div id="activity-<?php echo $upcomingActivity->activity_id;?>" class="activity">
+                    <div class="image">
+                        <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
+                    </div> <!-- .activity-image -->
+                    <div class="detail">
+                        <h2><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span><?php echo $upcomingActivity->activity_name; ?></h2>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <i class="icon-calendar"></i>
+                                <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($upcomingActivity->activity_end_time)); ?></span>
+                            </div>
+                        </div> <!-- .row-fluid -->
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <i class="icon-map-marker"></i>
+                                <span class="place"><?php echo $upcomingActivity->activity_place; ?></span>
+                            </div>
+                        </div> <!-- .row-fluid -->
+                    </div> <!-- .activity-detail -->
+                    <div class="attendance">
+                        <span class="pull-right">已有<span class="participants"><?php echo $upcomingActivity->attendance()->where('is_attend', '=', 1)->count(); ?></span>人报名</span>
+                    <?php 
+                        $attendance = $upcomingActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->first();
+                        if ( $attendance != null && $attendance->pivot->is_attend ): 
+                    ?>
+                        <span>您已报名参加本次活动.</span>
+                    <?php elseif ( $attendance != null && !$attendance->pivot->is_attend ): ?>
+                        <span>您已确认不参加本次活动.</span>
+                    <?php else: ?>
+                        <ul class="inline">
+                            <li class="accept"><a href="javascript:void(0);">参加</a></li>
+                            <li class="reject"><a href="javascript:void(0);">不参加</a></li>
+                        </ul>
+                    <?php endif; ?>
+                    </div> <!-- .attendance -->
+                </div> <!-- .activity -->
+            </div> <!--.span6 -->
     <?php if ( ++ $counter % 2 == 0 ): ?>
         </div> <!-- .row-fluid -->
     <?php endif; ?>
@@ -67,36 +76,38 @@
     <?php if ( $counter % 2 == 0 ): ?>
         <div class="row-fluid">
     <?php endif; ?>
-            <div id="activity-<?php echo $pastActivity->activity_id;?>" class="span6 activity">
-                <div class="image">
-                    <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
-                </div> <!-- .activity-image -->
-                <div class="detail">
-                    <h2><?php echo $pastActivity->activity_name; ?><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span></h2>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <i class="icon-calendar"></i>
-                            <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_end_time)); ?></span>
-                        </div>
-                    </div> <!-- .row-fluid -->
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <i class="icon-map-marker"></i>
-                            <span class="place"><?php echo $pastActivity->activity_place; ?></span>
-                        </div>
-                    </div> <!-- .row-fluid -->
-                </div> <!-- .activity-detail -->
-                <div class="attendance">
-                    <p>
-                    <?php if ( $pastActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->where('is_attend', '=', 1)->count() ): ?>
-                        <span>您参加了本次活动.</span>
-                    <?php else: ?>
-                        <span>您尚未参加本次活动.</span>
-                    <?php endif; ?>
-                        <span>总计有<?php echo $pastActivity->attendance()->where('is_attend', '=', 1)->count(); ?>人参加了本次活动.</span>
-                    </p>
-                </div> <!-- .attendance -->
-            </div> <!-- .activity -->
+            <div class="span6">
+                <div id="activity-<?php echo $pastActivity->activity_id;?>" class="activity">
+                    <div class="image">
+                        <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
+                    </div> <!-- .activity-image -->
+                    <div class="detail">
+                        <h2><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span><?php echo $pastActivity->activity_name; ?></h2>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <i class="icon-calendar"></i>
+                                <span class="time"><?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_start_time)); ?>~<?php echo date('Y年m月d日 H:i', strtotime($pastActivity->activity_end_time)); ?></span>
+                            </div>
+                        </div> <!-- .row-fluid -->
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <i class="icon-map-marker"></i>
+                                <span class="place"><?php echo $pastActivity->activity_place; ?></span>
+                            </div>
+                        </div> <!-- .row-fluid -->
+                    </div> <!-- .activity-detail -->
+                    <div class="attendance">
+                        <p>
+                        <?php if ( $pastActivity->attendance()->where('activity_attendance.username', '=', $activity['username'])->where('is_attend', '=', 1)->count() ): ?>
+                            <span>您参加了本次活动.</span>
+                        <?php else: ?>
+                            <span>您尚未参加本次活动.</span>
+                        <?php endif; ?>
+                            <span>总计有<?php echo $pastActivity->attendance()->where('is_attend', '=', 1)->count(); ?>人参加了本次活动.</span>
+                        </p>
+                    </div> <!-- .attendance -->
+                </div> <!-- .activity -->
+            </div> <!-- .span6 -->
     <?php if ( ++ $counter % 2 == 0 ): ?>
         </div> <!-- .row-fluid -->
     <?php endif; ?>
@@ -118,7 +129,7 @@
                 <label for="activity-name">活动名称</label>
             </div> <!-- .span4 -->
             <div class="span8">
-                <input id="activity-name" class="span12" type="text" maxlength="32" />
+                <input id="activity-name" class="span10" type="text" maxlength="32" />
             </div> <!-- .span8 -->
         </div> <!-- .row-fluid -->
         <div class="row-fluid">
@@ -127,7 +138,7 @@
             </div> <!-- .span4 -->
             <div class="span8">
                 <div class="controls input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
-                    <input id="start-time" class="span12" type="text" value="" readonly>
+                    <input id="start-time" class="span10" type="text" value="" readonly>
                     <span class="add-on"><i class="icon-th"></i></span>
                 </div> <!-- .input-append -->
             </div> <!-- .span8 -->
@@ -138,7 +149,7 @@
             </div> <!-- .span4 -->
             <div class="span8">
                 <div class="controls input-append date form_datetime" data-date-format="yyyy-mm-dd hh:ii">
-                    <input id="end-time" class="span12" type="text" value="" readonly>
+                    <input id="end-time" class="span10" type="text" value="" readonly>
                     <span class="add-on"><i class="icon-th"></i></span>
                 </div> <!-- .input-append -->
             </div> <!-- .span8 -->
@@ -148,7 +159,7 @@
                 <label for="place">活动地点</label>
             </div> <!-- .span4 -->
             <div class="span8">
-                <input id="place" class="span12" type="text" maxlength="128" />
+                <input id="place" class="span10" type="text" maxlength="128" />
             </div> <!-- .span8 -->
         </div> <!-- .row-fluid -->
         <div class="row-fluid">
@@ -156,7 +167,7 @@
                 <label for="detail">详细说明</label>
             </div> <!-- .span4 -->
             <div class="span8">
-                <textarea id="detail" class="span12" rows="5"></textarea>
+                <textarea id="detail" class="span10" rows="5"></textarea>
             </div> <!-- .span8 -->
         </div> <!-- .row-fluid -->
     </div> <!-- .modal-body -->
@@ -195,7 +206,7 @@
 
 <!-- JavaScript -->
 <script type="text/javascript">
-    $('button.pull-right').click(function() {
+    $('button#create-activity').click(function() {
         $('#new-activity input').val('');
         $('#new-activity textarea').val('');
 
