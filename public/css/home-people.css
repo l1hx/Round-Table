@@ -110,6 +110,9 @@ div#content div#main-content div.profile div.introduction span.email a {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
+	div#content div#main-content {
+		margin-left: 0;
+	}
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -127,6 +130,15 @@ div#content div#main-content div.profile div.introduction span.email a {
 @media only screen and (max-width: 479px) {
 	div#content {
 		width: 320px;
+	}
+
+	div#content div#main-content div.profile {
+		margin: 0 5px 10px 0;
+		width: 153px;
+	}
+
+	div#content div#main-content div.profile span.email a {
+		max-width: 110px;
 	}
 
 	div#content div#sidebar div#filter input {
