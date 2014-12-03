@@ -193,8 +193,8 @@ return array(
 
 	'cdn' => array(
 
-		// 'class8.b0.upaiyun.com'			=> '',
-		'localhost.class8.zjhzxhz.com'	=> '',
+		'class8.b0.upaiyun.com'			=> '',
+		// 'localhost.class8.zjhzxhz.com'	=> '',
 
 	),
 

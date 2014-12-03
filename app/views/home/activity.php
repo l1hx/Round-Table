@@ -367,10 +367,10 @@
         return year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
     }
 </script>
-<script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.datetimepicker.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.datetimepicker.zh-CN.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
-    function initializeDateTimePicker() {
+    function initDateTimePicker() {
         $('.form_datetime').datetimepicker({
             language:  'zh-CN',
             weekStart: 1,
@@ -386,7 +386,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        initializeDateTimePicker();
+        initDateTimePicker();
     });
 </script>
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=c8217ee6277393d58ee271ca70288e66&callback=initializeMap"></script>
