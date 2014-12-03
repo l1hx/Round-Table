@@ -12,9 +12,17 @@ div#hero div#profile-card {
 	padding: 40px 0;
 }
 
+div#hero div#profile-card img {
+	max-width: 100px;
+}
+
 div#hero div#profile-card p {
 	font-size: 12px;
 	margin-bottom: 0;
+}
+
+div#hero div#cover {
+	overflow: hidden;
 }
 
 div.block {

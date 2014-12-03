@@ -1,4 +1,4 @@
-<link href="<?php echo URL::to('/'); ?>/css/home-people.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="<?php echo Helper::cdn('/css/home-people.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
 <div class="row-fluid">
     <div id="sidebar" class="span3">
         <div id="filter">
@@ -17,7 +17,7 @@
         foreach ( $people as $person ): ?>
         <div class="profile">
             <div class="avatar" style="background: <?php echo $colors[rand(0, 3)]; ?>">
-                <img src="<?php echo URL::to('/'); ?>/img/silhouette.png" alt="avatar">
+                <img src="<?php echo Helper::cdn('/img/silhouette.png'); ?>" alt="avatar" />
             </div> <!-- .avatar -->
             <div class="introduction">
                 <h2><?php echo $person['username']; ?></h2>
@@ -38,10 +38,11 @@
 
 <!-- Java Script -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/md5.js"></script>
+<script type="text/javascript" src="<?php echo Helper::cdn('/js/md5.js'); ?>"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.profile').each(function() {
+        // DO NOTHING, Since Gravatar is blocked by GFW
+        /*$('.profile').each(function() {
             var email       = $('.email > a', this).html(),
                 hashCode    = md5(email),
                 imageObject = $('img', this);
@@ -57,7 +58,7 @@
                     }
                 }
             });
-        });
+        });*/
     });
 </script>
 <script type="text/javascript">

@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/accounts-reset.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap-responsive.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/accounts-reset.css'); ?>" />
     <!-- Java Script -->
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/md5.js"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/jquery-1.11.1.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/md5.js'); ?>"></script>
 </head>
 <body>
 	<div id="wrapper" class="container">
         <div id="header">
             <div class="row-fluid">
                 <div class="span4">
-                    <img src="<?php echo URL::to('/'); ?>/img/logo-light.png" alt="Logo">
+                    <img src="<?php echo Helper::cdn('/img/logo-light.png'); ?>" alt="The Home of Class8" />
                 </div> <!-- .span4 -->
                 <div class="span8">
                     <button class="btn" onclick="window.location.href='<?php echo URL::to('/'); ?>'">登录</button>
@@ -31,7 +31,7 @@
             <div class="row-fluid">
                 <div class="offset1 span3">
                     <div id="logo">
-                        <img src="<?php echo URL::to('/'); ?>/img/logo-dark.png" alt="Logo">
+                        <img src="<?php echo Helper::cdn('/img/logo-dark.png'); ?>" alt="The Home of Class8" />
                     </div> <!-- #logo -->
                 </div> <!-- .span3 -->
                 <div class="span8">

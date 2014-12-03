@@ -1,5 +1,5 @@
-<link href="<?php echo URL::to('/'); ?>/css/home-activity.css" media="screen" rel="stylesheet" type="text/css" />
-<link href="<?php echo URL::to('/'); ?>/css/bootstrap.datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css">
+<link href="<?php echo Helper::cdn('/css/home-activity.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+<link href="<?php echo Helper::cdn('/css/bootstrap.datetimepicker.min.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
 <!-- Upcoming Activities -->
 <div class="section-header row-fluid">
     <div class="span8">
@@ -20,7 +20,7 @@
             <div class="span6">
                 <div id="activity-<?php echo $upcomingActivity->activity_id;?>" class="activity">
                     <div class="image">
-                        <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
+                        <img src="<?php echo Helper::cdn('/img/activities/activity-'.rand(1, 5).'.gif') ;?>" alt="Activity Image" />
                     </div> <!-- .activity-image -->
                     <div class="detail">
                         <h2><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span><?php echo $upcomingActivity->activity_name; ?></h2>
@@ -83,7 +83,7 @@
             <div class="span6">
                 <div id="activity-<?php echo $pastActivity->activity_id;?>" class="activity">
                     <div class="image">
-                        <img src="<?php echo URL::to('/') ;?>/img/activities/activity-<?php echo rand(1, 5); ?>.gif" alt="Activity Image" />
+                        <img src="<?php echo Helper::cdn('/img/activities/activity-'.rand(1, 5).'.gif') ;?>" alt="Activity Image" />
                     </div> <!-- .activity-image -->
                     <div class="detail">
                         <h2><span class="detail pull-right"><a href="javascript:void(0)">详细信息</a></span><?php echo $pastActivity->activity_name; ?></h2>
@@ -367,8 +367,8 @@
         return year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
     }
 </script>
-<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.min.js"></script>
-<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.datetimepicker.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.datetimepicker.zh-CN.js'); ?>"></script>
 <script type="text/javascript">
     function initializeDateTimePicker() {
         $('.form_datetime').datetimepicker({

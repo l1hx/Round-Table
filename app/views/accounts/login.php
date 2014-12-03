@@ -5,14 +5,14 @@
     <title>登录 | The Home of Class8</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
+    <link rel="shortcut icon" href="<?php echo Helper::cdn('/img/favicon.png'); ?>" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/accounts-login.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap-responsive.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/accounts-login.css'); ?>" />
     <!-- Java Script -->
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/md5.js"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/jquery-1.11.1.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/md5.js'); ?>"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -38,7 +38,7 @@
         <div id="content" class="container">
             <div id="main-content" class="row-fluid">
                 <div id="header" class="span6">
-                    <img src="<?php echo URL::to('/'); ?>/img/logo-light.png" alt="The Home of Class8" />
+                    <img src="<?php echo Helper::cdn('/img/logo-light.png'); ?>" alt="The Home of Class8" />
                 </div> <!-- #header -->
                 <div class="span6">
                     <form id="signin-form" method="post" onsubmit="onSubmit(); return false;">
@@ -85,7 +85,7 @@
     <script type="text/javascript">
         function getBackgroundImageUrl() {
             var imageNumber = Math.floor(Math.random() * 5);
-            return 'url("<?php echo URL::to('/'); ?>/img/backgrounds/bg' + imageNumber + '.jpg")';
+            return 'url("<?php echo Helper::getCdnDomainUrl('*.jpg'); ?>/img/backgrounds/bg' + imageNumber + '.jpg")';
         }
     </script>
     <script type="text/javascript">

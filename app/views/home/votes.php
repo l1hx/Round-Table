@@ -1,7 +1,7 @@
-<link href="<?php echo URL::to('/'); ?>/css/home-votes.css" media="screen" rel="stylesheet" type="text/css" />
-<link href="<?php echo URL::to('/'); ?>/css/bootstrap.datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/raphael-2.1.2.min.js"></script>
-<script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/raphael-pie-chart.js"></script>
+<link href="<?php echo Helper::cdn('/css/home-votes.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+<link href="<?php echo Helper::cdn('/css/bootstrap.datetimepicker.min.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo Helper::cdn('/js/raphael-2.1.2.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo Helper::cdn('/js/raphael-pie-chart.js'); ?>"></script>
 <div class="section-header row-fluid">
     <div class="span8">
         <h1>正在进行的投票</h1>

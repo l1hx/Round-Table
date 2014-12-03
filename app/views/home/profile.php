@@ -1,15 +1,13 @@
-<link href="<?php echo URL::to('/'); ?>/css/home-profile.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="<?php echo Helper::cdn('/css/home-profile.css'); ?>" media="screen" rel="stylesheet" type="text/css" />
 <div id="hero" class="row-fluid">
     <div id="profile-card" class="span4">
-        <a href="http://www.gravatar.com" target="_blank">
-            <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($profile['email'])); ?>?s=100&d=mm" class="img-circle" alt="avatar" />
-        </a>
+        <img src="<?php echo Helper::cdn('/img/avatar.jpg'); ?>" class="img-circle" alt="avatar" />
         <h2><?php echo $profile['username']; ?></h2>
         <p class="live-in">现居<?php echo $profile['country']; ?>, <?php echo $profile['city']; ?></p>
         <p class="work-at">就读/就职于<?php echo $profile['company']; ?></p>
     </div> <!-- #profile-card -->
     <div id="cover" class="span8">
-        <img src="<?php echo URL::to('/'); ?>/img/cover.jpg" alt="Cover">
+        <img src="<?php echo Helper::cdn('/img/cover.jpg'); ?>" alt="Cover" />
     </div> <!-- #cover -->
 </div> <!-- #hero -->
 <div id="information">

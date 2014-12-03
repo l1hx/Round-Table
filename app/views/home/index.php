@@ -5,20 +5,20 @@
     <title>首页 | The Home of Class8</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/img/favicon.png" />
+    <link rel="shortcut icon" href="<?php echo Helper::cdn('/img/favicon.png'); ?>" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/css/home-base.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/bootstrap-responsive.min.css'); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Helper::cdn('/css/home-base.css'); ?>" />
     <!-- Java Script -->
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL::to('/'); ?>/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/jquery-1.11.1.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo Helper::cdn('/js/bootstrap.min.js'); ?>"></script>
 </head>
 <body>
     <div id="header" class="row-fluid">
         <div id="logo" class="span3">
             <a href="<?php echo URL::to('/'); ?>/home">
-                <img src="<?php echo URL::to('/'); ?>/img/logo-dark.png" alt="Product Logo" />
+                <img src="<?php echo Helper::cdn('/img/logo-dark.png'); ?>" alt="The Home of Class8" />
             </a>
         </div> <!-- #logo -->
         <div id="search" class="span5">
@@ -38,15 +38,15 @@
                 <li><a href="#profile"><?php echo $username; ?></a></li>
                 <li>
                     <a id="profile-trigger" href="javascript:void(0)">
-                        <img class="img-circle" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($email)); ?>?s=100&d=mm" alt="avatar" />
-                        <img src="<?php echo URL::to('/'); ?>/img/dropdown.png" alt="dropdown" />
+                        <img src="<?php echo Helper::cdn('/img/avatar.jpg'); ?>" class="img-circle" alt="avatar" />
+                        <img src="<?php echo Helper::cdn('/img/dropdown.png'); ?>" alt="dropdown" />
                     </a>
                     <div id="profile">
                         <div class="dropdown-shadow"></div> <!-- .dropdown-shadow -->
                         <div class="dropdown"></div> <!-- .dropdown -->
                         <div class="row-fluid">
                             <div class="span4">
-                                <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($email)); ?>?s=200&d=mm" alt="avatar" />
+                                <img src="<?php echo Helper::cdn('/img/avatar.jpg'); ?>" alt="avatar" />
                             </div> <!-- .span4 -->
                             <div class="span8">
                                 <div id="user-info">
