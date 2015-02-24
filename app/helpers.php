@@ -43,13 +43,13 @@ class Helper {
         $cdnSettings = Config::get('app.cdn');
         $assetName   = basename($filePath);
 
-        foreach( $cdnSettings as $cdnDomain => $fileExt ) {
+        foreach( $cdnSettings as $fileExt => $cdnDomain ) {
             if( preg_match('/^.*\.('.$fileExt.')$/i', $assetName) ) {
                 return $cdnDomain;
             }
         }
 
-        $cdnDomain   = key(array_slice($cdnSettings, -1, 1, TRUE));
+        $cdnDomain   = $cdnSettings['default'];
         return $cdnDomain;
     }
 
