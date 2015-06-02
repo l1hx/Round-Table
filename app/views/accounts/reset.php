@@ -87,7 +87,7 @@
     </div>
     <div id="footer" class="row-fluid container">
         <div class="span8">
-            <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">HApPy Studio</a>. All rights reserved.</p>
+            <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">Trunk Shell</a>. All rights reserved.</p>
         </div> <!-- .span8 -->
         <div class="span4">
             <ul class="inline">

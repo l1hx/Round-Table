@@ -116,7 +116,7 @@
                     <li><a href="http://zjhzxhz.github.io/class8" target="_blank">帮助</a></li>
                     <li><a href="http://www.zjhzxhz.com/about" target="_blank">关于</a></li>
                 </ul>
-                <div id="copyright">&copy; <?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">HApPy Studio</a></div> <!-- #copyright -->
+                <div id="copyright">&copy; <?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">Trunk Shell</a></div> <!-- #copyright -->
             </div> <!-- #footer -->
         </div> <!-- #navigation-sidebar -->
         <div id="notify-widget-panel" class="hide">

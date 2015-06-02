@@ -22,7 +22,7 @@
 									此致, <br>
 									8班全体同学.<br><br>
 									<div style="border-top:3px solid #eee;color:#999;font-size:11px;line-height:1.2">
-										<br>Powered by <a href="http://www.zjhzxhz.com" target="_blank" style="color: #005399;text-decoration: none;">HApPy Studio</a>. All rights reserved.<br>
+										<br>Powered by <a href="http://www.zjhzxhz.com" target="_blank" style="color: #005399;text-decoration: none;">Trunk Shell</a>. All rights reserved.<br>
 									</div>
 								</td>
 							</tr>
