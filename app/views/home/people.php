@@ -41,14 +41,13 @@
 <script type="text/javascript" src="<?php echo Helper::cdn('/js/md5.js'); ?>"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        // DO NOTHING, Since Gravatar is blocked by GFW
-        /*$('.profile').each(function() {
+        $('.profile').each(function() {
             var email       = $('.email > a', this).html(),
                 hashCode    = md5(email),
                 imageObject = $('img', this);
             $.ajax({
                 type: 'GET',
-                url: 'https://www.gravatar.com/' + hashCode + '.json',
+                url: 'https://secure.gravatar.com/' + hashCode + '.json',
                 dataType: 'jsonp',
                 success: function(result){
                     if ( result != null ) {
@@ -58,7 +57,7 @@
                     }
                 }
             });
-        });*/
+        });
     });
 </script>
 <script type="text/javascript">
