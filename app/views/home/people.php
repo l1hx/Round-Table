@@ -38,9 +38,8 @@
 
 <!-- Java Script -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="<?php echo Helper::cdn('/js/md5.js'); ?>"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $.getScript('<?php echo Helper::cdn('/js/md5.js'); ?>', function() {
         $('.profile').each(function() {
             var email       = $('.email > a', this).html(),
                 hashCode    = md5(email),
