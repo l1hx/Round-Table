@@ -8,10 +8,12 @@ use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 
 use App\Models\Activity;
+use App\Models\ActivityAttendance;
 use App\Models\Classmate;
 use App\Models\User;
 
@@ -222,11 +224,13 @@ class HomeController extends BaseController {
      */
     public function getActivityAction() {
         $activityId = Request::input('activityId');
-        $activity   = Activity::with('attendance')->where('activity_id', '=', $activityId)->first();
+        $activity   = Activity::where('activity_id', $activityId)->first();
+        $attendance = ActivityAttendance::where('activity_id', $activityId)->where('is_attend', 1)->get();
 
         $result     = array(
             'isSuccessful'  => $activity != null,
             'activity'      => $activity,
+            'attendance'    => $attendance,
         );
         return Response::json($result);
     }

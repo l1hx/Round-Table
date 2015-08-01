@@ -353,9 +353,9 @@
         }
         
         $('.participants', '#activity-detail').empty();
-        var numberOfParticipants = result['activity']['attendance'].length;
+        var numberOfParticipants = result['attendance'].length;
         for ( var i = 0; i < numberOfParticipants; ++ i ) {
-            $('.participants', '#activity-detail').append('<li>' + result['activity']['attendance'][i]['username'] + '</li>');
+            $('.participants', '#activity-detail').append('<li>' + result['attendance'][i]['username'] + '</li>');
         }
         searchPlace(result['activity']['activity_place']);
         $('#activity-detail').modal();
