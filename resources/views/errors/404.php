@@ -29,7 +29,7 @@
             </div> <!-- .span6 -->
         </div> <!-- #content -->
         <div id="footer">
-            <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">Trunk Shell</a>. All rights reserved.</p>
+            <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com" target="_blank">Infinite Script</a>. All rights reserved.</p>
         </div> <!-- #footer -->
     </div> <!-- #wrapper -->
 </body>

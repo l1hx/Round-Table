@@ -70,7 +70,7 @@
         </div> <!-- #content -->
         <div id="footer">
             <div id="copyright">
-                <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com">Trunk Shell</a>. All rights reserved.</p>
+                <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com">Infinite Script</a>. All rights reserved.</p>
             </div> <!-- #copyright -->
             <div id="help-and-support">
                 <ul class="inline">
