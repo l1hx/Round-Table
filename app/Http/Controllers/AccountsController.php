@@ -125,7 +125,7 @@ class AccountsController extends BaseController {
             'keycode'   => $keycode,
         );
         Mail::send('mails.reset', $data, function($message) use ($email) {
-            $message->from('noreply@zjhzxhz.com', 'The Home of Class8')->subject('Reset Your Password');
+            $message->from('zsp999@qq.com', 'The Home of Class8')->subject('Reset Your Password');
             $message->to($email);
         });
     }
