@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8"/>
-    <title>登录 | The Home of Class8</title>
+    <title>登录 | 我们圆桌会</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo cdn('/img/favicon.png'); ?>" />
@@ -38,7 +38,7 @@
         <div id="content" class="container">
             <div id="main-content" class="row-fluid">
                 <div id="header" class="span6">
-                    <img src="<?php echo cdn('/img/logo-light.png'); ?>" alt="The Home of Class8" />
+                    <img src="<?php echo cdn('/img/logo-light.png'); ?>" alt="我们圆桌会" />
                 </div> <!-- #header -->
                 <div class="span6">
                     <form id="signin-form" method="post" onsubmit="onSubmit(); return false;">
@@ -69,10 +69,10 @@
             </div> <!-- #main-content -->
         </div> <!-- #content -->
         <div id="footer">
-            <div id="copyright">
-                <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com">Infinite Script</a>. All rights reserved.</p>
+          <!--  <div id="copyright">
+                 <p>Copyright&copy; 2005-<?php echo date('Y'); ?> <a href="http://www.zjhzxhz.com">Infinite Script</a>. All rights reserved.</p>
             </div> <!-- #copyright -->
-            <div id="help-and-support">
+           <!-- <div id="help-and-support">
                 <ul class="inline">
                     <li><a href="http://zjhzxhz.github.io/class8" target="_blank">帮助中心</a></li>
                     <li>|</li>
@@ -112,10 +112,10 @@
     <script type="text/javascript">
         function onSubmit() {
             $('.alert-success').hide();
-            
+
             $('button[type=submit]').attr('disabled', 'disabled');
             $('button[type=submit]').html('正在登录...');
-            
+
             var username    = $('#username').val(),
                 password    = md5($('input[name=password]').val()),
                 rememberMe  = $('#remember-me').is(':checked');

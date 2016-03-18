@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>首页 | The Home of Class8</title>
+    <title>首页 | 我们圆桌会</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="_token" content="<?php echo csrf_token(); ?>" />
@@ -19,12 +19,12 @@
     <div id="header" class="row-fluid">
         <div id="logo" class="span3">
             <a href="<?php echo URL::to('/'); ?>/home">
-                <img src="<?php echo cdn('/img/logo-dark.png'); ?>" alt="The Home of Class8" />
+                <img src="<?php echo cdn('/img/logo-dark.png'); ?>" alt="我们圆桌会" />
             </a>
         </div> <!-- #logo -->
         <div id="search" class="span5">
             <div class="input-append">
-                <input type="search" placeholder="搜索您的同学和活动" />
+                <input type="search" placeholder="搜索您的嘉宾或节目" />
                 <button class="btn btn-primary"><i class="icon icon-search"></i></button>
             </div> <!-- .input-append -->
         </div> <!-- #search -->
@@ -219,12 +219,12 @@
         function updateNavigation(pageName) {
             var triggerObject   = $('a[href=#' + pageName + ']'),
                 pageDisplayName = $('.position-name', triggerObject).html();
-            
+
             $('#position > .position-icon').attr('class', function(i, c) {
                 return c.replace(/(^|\s)icon-\S+/g, ' icon-' + pageName);
             });
             $('#position > .position-name').html(pageDisplayName);
-            document.title = pageDisplayName + ' | The Home of Class8';
+            document.title = pageDisplayName + ' | 我们圆桌会';
         }
     </script>
     <script type="text/javascript">
@@ -236,7 +236,7 @@
                 $("#profile").slideDown(36);
             }
             event.stopPropagation();
-            
+
             $(document).click(function() {
                 $("#profile").slideUp(36);
             });

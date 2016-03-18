@@ -20,7 +20,7 @@
         <div id="header">
             <div class="row-fluid">
                 <div class="span4">
-                    <img src="<?php echo cdn('/img/logo-light.png'); ?>" alt="The Home of Class8" />
+                    <img src="<?php echo cdn('/img/logo-light.png'); ?>" alt="Table Round US" />
                 </div> <!-- .span4 -->
                 <div class="span8">
                     <button class="btn" onclick="window.location.href='<?php echo URL::to('/'); ?>'">登录</button>
@@ -84,8 +84,8 @@
                     <?php endif; ?>
                     </div> <!-- #main-content -->
                 </div> <!-- .span8 -->
-            </div> <!-- .row-fluid -->  
-        </div> <!-- #content -->   
+            </div> <!-- .row-fluid -->
+        </div> <!-- #content -->
     </div>
     <div id="footer" class="row-fluid container">
         <div class="span8">
